@@ -20,7 +20,11 @@
        far ahead of me for now. I currently intern at a startup
        company in Seattle called MultiScale Health Networks. If
        you want to find out more about what they do, just go to
-       their <a href="https://multiscale.io/">website</a>.
+       their <a href="https://multiscale.io/">website</a>. <br>
+       I served a mission in the Texas Houston South Mission
+       from 2012-2014 (I'm old). I started going to school at
+       BYU Idaho in Spring of 2015 where I decided to major in
+       Computer Science and I've stuck with it ever since.
    </p>
 
 </body>
