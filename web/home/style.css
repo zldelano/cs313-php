@@ -12,6 +12,8 @@ https://stackoverflow.com/questions/3396475/specifying-width-and-height-as-perce
 
 element {
     --background_color: #444;
+    --basic_text_color: #ededed;
+    --basic_text_padding: 70px;
 }
 
 body {
@@ -19,11 +21,21 @@ body {
     background: #222;
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
-    padding-left: 10px;
 }
 
 body h1 {
-    color: #ededed;
+    color: var(--basic_text_color);
+    padding-left: var(--basic_text_padding);
+}
+
+body h2 {
+    color: var(--basic_text_color);
+    padding-left: var(--basic_text_padding);
+}
+
+body p {
+    color: var(--basic_text_color);
+    padding-left: var(--basic_text_padding);
 }
 
 .container {
