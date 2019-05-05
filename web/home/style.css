@@ -1,20 +1,9 @@
 /*
 
-Currently following this tutorial:
+I followed this tutorial to get this style:
 https://www.youtube.com/watch?time_continue=3&v=FEmysQARWFU
-I'm stopped at the 12:13 mark.
-
-There's also a link to this stackoverflow post that talks about
-image resizing without explicitly setting the width:
-https://stackoverflow.com/questions/3396475/specifying-width-and-height-as-percentages-without-skewing-photo-proportions-in
 
 */
-
-element {
-    --background_color: #444;
-    --basic_text_color: #ededed;
-    --basic_text_padding: 70px;
-}
 
 body {
     margin: 0;
@@ -25,22 +14,25 @@ body {
 
 body h1 {
     color: #ededed;
-    ;
-    padding-left: 70px;
+    width: 80%;
+    margin: 0 auto;
+    /* padding-left: 200px; */
     /* margin-left: 70px; */
 }
 
 body h2 {
     color: #ededed;
-    ;
-    padding-left: 70px;
+    width: 80%;
+    margin: 0 auto;
+    /* padding-left: 200px; */
     /* margin-left: 70px; */
 }
 
 body p {
     color: #ededed;
-    ;
-    padding-left: 70px;
+    width: 80%;
+    margin: 0 auto;
+    /* padding-left: 200px; */
     /* margin-left: 70px; */
 }
 
