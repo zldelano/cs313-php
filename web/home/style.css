@@ -1,3 +1,15 @@
+/*
+
+Currently following this tutorial:
+https://www.youtube.com/watch?time_continue=3&v=FEmysQARWFU
+I'm stopped at the 12:13 mark.
+
+There's also a link to this stackoverflow post that talks about
+image resizing without explicitly setting the width:
+https://stackoverflow.com/questions/3396475/specifying-width-and-height-as-percentages-without-skewing-photo-proportions-in
+
+*/
+
 body {
     margin: 0;
     background: #222;

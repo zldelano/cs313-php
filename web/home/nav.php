@@ -1,6 +1,6 @@
 <header>
     <div class="container">
-        <img src="img/logo_black.png" alt="logo" class="logo">
+        <img src="img/logo_black.png" alt="logo" class="logo" width="200px" height="100px">
         <nav>
             <ul>
                 <?php
