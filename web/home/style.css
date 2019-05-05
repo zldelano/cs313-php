@@ -55,6 +55,9 @@ nav li {
     display: inline-block;
     margin-left: 70px;
     padding-top: 23px;
+    position: relative;
+    /* `position: relative` makes it so that nav a::before
+       `position: absolute` does not take over the whole screen */
 }
 
 nav a {
@@ -66,4 +69,21 @@ nav a {
 
 nav a:hover {
     color: #000;
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #444;
+    position: absolute;
+    top: 0;
+    /* `top: 0` puts the `nav li` lines at the top of the screen */
+    width: 0%;
+    transition: all ease-in-out 250ms;
+    /* this transition property gives us the nice `nav li` effect */
+}
+
+nav a::hover::before {
+    width: 100%;
 }
