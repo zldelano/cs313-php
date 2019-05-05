@@ -13,6 +13,7 @@
       require 'nav.php';
    ?>
    <h1>Assignments</h1>
+   <p>Coming soon...</p>
  
 </body>
 </html>
