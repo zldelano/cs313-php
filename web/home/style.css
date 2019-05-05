@@ -36,6 +36,10 @@ body p {
     /* margin-left: 70px; */
 }
 
+body p a {
+    color: #55d6aa;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
