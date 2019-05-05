@@ -25,17 +25,20 @@ body {
 
 body h1 {
     color: var(--basic_text_color);
-    padding-left: var(--basic_text_padding);
+    /* padding-left: var(--basic_text_padding); */
+    margin-left: var(--basic_text_padding);
 }
 
 body h2 {
     color: var(--basic_text_color);
-    padding-left: var(--basic_text_padding);
+    /* padding-left: var(--basic_text_padding); */
+    margin-left: var(--basic_text_padding);
 }
 
 body p {
     color: var(--basic_text_color);
-    padding-left: var(--basic_text_padding);
+    /* padding-left: var(--basic_text_padding); */
+    margin-left: var(--basic_text_padding);
 }
 
 .container {
