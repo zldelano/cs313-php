@@ -10,11 +10,17 @@ https://stackoverflow.com/questions/3396475/specifying-width-and-height-as-perce
 
 */
 
+element {
+    --background_color: #444;
+}
+
 body {
     margin: 0;
     background: #222;
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
+    padding: 10px 0;
+    color: #ededed;
 }
 
 .container {
@@ -61,7 +67,8 @@ nav li {
 }
 
 nav a {
-    color: #444;
+    /* color: #444; */
+    color: var(--background_color);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
@@ -75,7 +82,8 @@ nav a::before {
     content: '';
     display: block;
     height: 5px;
-    background-color: #444;
+    /* background-color: #444; */
+    background-color: var(--background_color);
     position: absolute;
     top: 0;
     /* `top: 0` puts the `nav li` lines at the top of the screen */
