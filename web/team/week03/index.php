@@ -13,14 +13,14 @@
                <input type="radio" name="major" value="Web Design & Development">Web Design & Development<br>            
                <input type="radio" name="major" value="Computer Information Technology">Computer Information Technology<br>
                <input type="radio" name="major" value="Computer Engineering">Computer Engineering<br>
-            <label>Continents visited: </label><br>            
-               <input type="checkbox" name="continents[]" value="North America"> North America
-               <input type="checkbox" name="continents[]" value="South America"> South America
-               <input type="checkbox" name="continents[]" value="Europe"> Europe 
-               <input type="checkbox" name="continents[]" value="Asia"> Asia 
-               <input type="checkbox" name="continents[]" value="Australia"> Australia 
-               <input type="checkbox" name="continents[]" value="Africa"> Africa 
-               <input type="checkbox" name="continents[]" value="Antarctica"> Antarctica 
+            <label>Continents visited: </label><br>
+               <input type="checkbox" name="continents[]" value="North America"> North America<br>
+               <input type="checkbox" name="continents[]" value="South America"> South America<br>
+               <input type="checkbox" name="continents[]" value="Europe"> Europe<br>
+               <input type="checkbox" name="continents[]" value="Asia"> Asia<br>
+               <input type="checkbox" name="continents[]" value="Australia"> Australia<br>
+               <input type="checkbox" name="continents[]" value="Africa"> Africa<br>
+               <input type="checkbox" name="continents[]" value="Antarctica"> Antarctica<br>
             <label>Comments: </label>
             <textarea name="comments" id="comments">Enter text here...</textarea><br><br>
             <input type="submit" name="submit" value="Send" id="submit">
