@@ -5,10 +5,10 @@ $major = $_POST["major"];
 $comments = $_POST["comments"];
 $continents = $_POST["continents"];
 
-echo "$name <br>";
-echo "<a href=\"mailto:$email\">$email</a><br>";
-echo "$major<br>";
-echo "$comments<br>";
+echo "Name:\t$name <br>";
+echo "Email:\t<a href=\"mailto:$email\">$email</a><br>";
+echo "Major:\t$major<br>";
+echo "Comments:\t$comments<br><br>";
 echo "<b>Continents visited:</b><br>";
 $continents_map = array("na" => "North America",
                         "sa" => "South America",
@@ -18,6 +18,6 @@ $continents_map = array("na" => "North America",
                         "af" => "Africa",
                         "an" => "Antarctica");
 foreach ($continents as $continent) {
-   echo "$continents_map[$continent]<br>";
+   echo "\t\t$continents_map[$continent]<br>";
 }
 ?>
