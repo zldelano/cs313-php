@@ -9,7 +9,7 @@ echo "$name <br>";
 echo "<a href=\"mailto:$email\">$email</a><br>";
 echo "$major<br>";
 echo "$comments<br>";
-echo "<b>Continents visited:</b><br>"
+echo "<b>Continents visited:</b><br>";
 foreach ($continents as $continent) {
    echo "$continent<br>";
 }
