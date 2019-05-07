@@ -9,10 +9,19 @@
             <label>Email: </label>
             <input type="text" name="email" size="25"/><br>
             <label>Major: </label><br>
-               <input type="radio" name="major" value="Computer Science">Computer Science<br>            
+               <?php
+                  $majors = array("Computer Science",
+                                  "Web Design & Development",
+                                  "Computer Information Technology",
+                                  "Computer Engineering");
+                  foreach ($majors as $major) {
+                     echo "<input type=\"radio\" name=\"major\" value=\"$major\">$major<br>";
+                  }
+               ?>
+               <!-- <input type="radio" name="major" value="Computer Science">Computer Science<br>            
                <input type="radio" name="major" value="Web Design & Development">Web Design & Development<br>            
                <input type="radio" name="major" value="Computer Information Technology">Computer Information Technology<br>
-               <input type="radio" name="major" value="Computer Engineering">Computer Engineering<br>
+               <input type="radio" name="major" value="Computer Engineering">Computer Engineering<br> -->
             <label>Continents visited: </label><br>
                <input type="checkbox" name="continents[]" value="North America"> North America<br>
                <input type="checkbox" name="continents[]" value="South America"> South America<br>
