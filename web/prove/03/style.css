@@ -1,0 +1,112 @@
+/*
+
+I followed this tutorial to get this style:
+https://www.youtube.com/watch?time_continue=3&v=FEmysQARWFU
+
+*/
+
+body {
+    margin: 0;
+    background: #222;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+}
+
+body h1 {
+    color: #ededed;
+    width: 80%;
+    margin: 0 auto;
+    /* padding-left: 200px; */
+    /* margin-left: 70px; */
+}
+
+body h2 {
+    color: #ededed;
+    width: 80%;
+    margin: 0 auto;
+    /* padding-left: 200px; */
+    /* margin-left: 70px; */
+}
+
+body p {
+    color: #ededed;
+    width: 80%;
+    margin: 0 auto;
+    /* padding-left: 200px; */
+    /* margin-left: 70px; */
+}
+
+body p a {
+    color: #55d6aa;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    /* background: #55d; */
+    background: #55d6aa;
+}
+
+
+/* clear fix for the header */
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.logo {
+    float: left;
+    padding: 10px 0;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 23px;
+    position: relative;
+    /* `position: relative` makes it so that nav a::before
+       `position: absolute` does not take over the whole screen */
+}
+
+nav a {
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #444;
+    position: absolute;
+    top: 0;
+    /* `top: 0` puts the `nav li` lines at the top of the screen */
+    width: 0%;
+    transition: all ease-in-out 250ms;
+    /* this transition property gives us the nice `nav li` effect */
+}
+
+nav a::hover::before {
+    width: 100%;
+}
