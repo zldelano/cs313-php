@@ -39,8 +39,9 @@
          echo "<img src=$src height=\"200\" width=\"200\" alt=$alt><br>";
          echo "<a href=\"shopping_cart.php?product=$tie_name\">Remove from Cart</a><br>";
       }
-      echo "<br><br>Total price: $total_price"
+      echo "<br><br>Total price: $total_price<br><br>";
    ?>
+   <a href="checkout.php">Proceed to Checkout</a><br><br>
    </p>
  
 </body>
