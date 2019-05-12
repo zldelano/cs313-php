@@ -115,8 +115,12 @@ nav a::hover::before {
     text-align: center;
 }
 
+.selection img {
+    width: 100%;
+}
+
 .selection .imgButtonPair {
-    position: relative;
+    display: inline;
 }
 
 .selection .imgButtonPair button {
