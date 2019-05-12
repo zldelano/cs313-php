@@ -25,7 +25,7 @@
    <h1>Checkout</h1>
    <p>
       <h2>Enter your address</h2>
-      <form action="confirmation.php">
+      <form action="confirmation.php" method="post">
          Street: <input type="text" name="street" required><br>
          City: <input type="text" name="city" required><br>
          State:  <input type="text" name="state" required><br>
