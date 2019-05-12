@@ -1,24 +1,7 @@
 <?php
    session_start();
    require ("products.php");
-
    $_SESSION['cart'] = array();
-   
-   switch ($action)
-   {
-      case "additem":
-         $itemid = (isset($_GET['itemid'])) ? $_GET['itemid']: "";
-         if($itemid != "")
-         {
-            if($_SESSION['cart'] == "")
-            {
-               $_SESSION['cart'] = array($products[$itemid]);
-            } else {
-               array_push($_SESSION['cart'], $products[$itemid]);
-            }
-         }
-         break;
-   }
 ?>
 
 <!DOCTYPE html>
