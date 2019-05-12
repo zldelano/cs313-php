@@ -19,6 +19,7 @@
 <body>
    <?php
       require 'nav.php';
+      require 'products.php'
    ?>
    <div class="selection" id="selection">
       <h1>Browse</h1>
