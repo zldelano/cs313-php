@@ -22,7 +22,7 @@
    <h1>Shopping Cart</h1>
    <p>
    <?php
-      foreach ($_SESSION['cart'] as $tie_name) {
+      foreach ($_SESSION['cart'] as $tie_name => $quantity) {
          echo "$tie_name is a total of $products[$tie_name]<br>";
       }
       // foreach ($products as $product => $price) {
