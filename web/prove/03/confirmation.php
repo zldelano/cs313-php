@@ -26,11 +26,25 @@
    <p>
       <form action="confirmation.php"></form>
    <?php
+      // assemble the address
+      $street = htmlspecialchars($_POST['street']);
+      $state = htmlspecialchars($_POST['state']);
+      $zip = htmlspecialchars($_POST['zip']);
+
+      // assemble the products and price
       $total_price = 0;
       foreach ($_SESSION['cart'] as $tie_name => $quantity) {
+         $price = $products[$tie_name]["price"];
+         $alt = $products[$tie_name]["alt"];
+         $src = $products[$tie_name]["src"];
          $total_price += $price;
+         echo "<img src=$src height=\"200\" width=\"200\" alt=$alt><br>";
+         echo "<a href=\"shopping_cart.php?product=$tie_name\">Remove from Cart</a><br>";
       }
-      echo "<br><br>Total price: $total_price"
+      echo "<br><br>Total price: $total_price<br><br>";
+      echo "These products will be sent to $street, $state $zip<br><br>";
+      unset($_SESSION['cart']);
+      session_end();
    ?>
    </p>
  

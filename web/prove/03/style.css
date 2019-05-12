@@ -36,6 +36,14 @@ body p {
     /* margin-left: 70px; */
 }
 
+body form {
+    color: #ededed;
+    width: 80%;
+    margin: 0 auto;
+    /* padding-left: 200px; */
+    /* margin-left: 70px; */
+}
+
 body p a {
     color: #55d6aa;
 }

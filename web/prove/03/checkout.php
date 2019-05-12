@@ -26,9 +26,9 @@
    <p>
       <h2>Enter your address</h2>
       <form action="confirmation.php">
-         Street: <input type="text" name="street"><br>
-         State:  <input type="text" name="state"><br>
-         ZIP:  <input type="text" name="zip"><br>
+         Street: <input type="text" name="street" required><br>
+         State:  <input type="text" name="state" required><br>
+         ZIP:  <input type="text" name="zip" required><br>
          <input type="submit" value="Submit">
       </form>
    <?php
