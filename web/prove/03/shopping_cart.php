@@ -20,14 +20,16 @@
       require 'products.php'
    ?>
    <h1>Shopping Cart</h1>
+   <p>
    <?php
-      // foreach ($_SESSION['cart'] as $tie_name => $tie_quantity) {
-      //    echo "$tie_name is set to $tie_quantity";
-      // }
-      foreach ($products as $product) {
-         echo "$product";
+      foreach ($_SESSION['cart'] as $tie_name) {
+         echo "$tie_name is a total of $products[$tie_name]<br>";
       }
+      // foreach ($products as $product => $price) {
+      //    echo "$product";
+      // }
    ?>
+   </p>
  
 </body>
 </html>
