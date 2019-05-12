@@ -1,6 +1,6 @@
-var products = [];
+// var products = [];
 
-$('.addToCart').click(function() {
-    var itemId = $(this).attr("id");
-    products.push(itemId);
-});
+// $('.addToCart').click(function() {
+//     var itemId = $(this).attr("id");
+//     products.push(itemId);
+// });
