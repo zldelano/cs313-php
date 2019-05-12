@@ -22,6 +22,8 @@
    <?php
       require 'nav.php';
       require 'products.php';
+
+      // if the query parameter is a product, add it to the cart.
       if (isset($_GET['product'])) {
          $_SESSION["cart"][$_GET['product']] = 1;
       }

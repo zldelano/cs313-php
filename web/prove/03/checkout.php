@@ -21,23 +21,20 @@
    <?php
       require 'nav.php';
       require 'products.php';
-
-      // if the query parameter is a product, remove it from the cart.
-      if (isset($_GET['product'])) {
-         unset($_SESSION["cart"][$_GET['product']]);
-      }
    ?>
-   <h1>Shopping Cart</h1>
+   <h1>Checkout</h1>
    <p>
+      <h2>Enter your address</h2>
+      <form action="confirmation.php">
+         Street: <input type="text" name="street"><br>
+         State:  <input type="text" name="state"><br>
+         ZIP:  <input type="text" name="zip"><br>
+         <input type="submit" value="Submit">
+      </form>
    <?php
       $total_price = 0;
       foreach ($_SESSION['cart'] as $tie_name => $quantity) {
-         $price = $products[$tie_name]["price"];
-         $alt = $products[$tie_name]["alt"];
-         $src = $products[$tie_name]["src"];
          $total_price += $price;
-         echo "<img src=$src height=\"200\" width=\"200\" alt=$alt><br>";
-         echo "<a href=\"shopping_cart.php?product=$tie_name\">Remove from Cart</a><br>";
       }
       echo "<br><br>Total price: $total_price"
    ?>
