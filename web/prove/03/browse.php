@@ -16,8 +16,8 @@
    <?php
       require 'nav.php';
    ?>
-   <h1>Browse</h1>
    <div class="selection" id="selection">
+      <h1>Browse</h1>
       <img src="img/ties/87933513_650_main.jpg" id="tie1" height="100" width="100" alt="Pink and Blue Checkered">
       <img src="img/ties/87933732_650_main.jpg" id="tie2" height="100" width="100" alt="Pink Floral">
       <br>
