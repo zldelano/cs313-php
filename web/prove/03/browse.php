@@ -13,7 +13,9 @@
       require 'nav.php';
    ?>
    <h1>Browse</h1>
-   <p>HAHA YOU GOT NUTHIN</p>
+   <div class="selection" id="selection">
+      <!--  -->
+   </div>
  
 </body>
 </html>
