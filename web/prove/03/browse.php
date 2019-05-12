@@ -1,6 +1,14 @@
 <?php
    session_start();
-   $_SESSION[$_POST['cart']]++;
+   $_SESSION['cart'] = array();
+   if (!in_array($_SESSION['cart'], $_POST['cart']))
+   {
+      $_SESSION['cart'][$_POST['cart']] = 1;
+   }
+   else
+   {
+      $_SESSION['cart'][$_POST['cart']]++;
+   }
 ?>
 
 <!DOCTYPE html>

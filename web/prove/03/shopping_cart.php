@@ -17,7 +17,11 @@
       require 'nav.php';
    ?>
    <h1>Shopping Cart</h1>
-   <p>Lol nothing is here boi.</p>
+   <?php
+      foreach ($_SESSION['cart'] as $tie_name => $tie_quantity) {
+         echo "$tie_name is set to $tie_quantity";
+      }
+   ?>
  
 </body>
 </html>
