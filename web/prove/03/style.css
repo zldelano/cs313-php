@@ -112,5 +112,5 @@ nav a::hover::before {
 }
 
 .selection {
-    align-content: center;
+    text-align: center;
 }
