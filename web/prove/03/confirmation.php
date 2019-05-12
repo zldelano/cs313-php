@@ -24,17 +24,12 @@
    ?>
    <h1>Checkout</h1>
    <p>
-      <form action="confirmation.php"></form>
    <?php
       // assemble the address
       $street = htmlspecialchars($_POST['street']);
       $city = htmlspecialchars($_POST['city']);
       $state = htmlspecialchars($_POST['state']);
       $zip = htmlspecialchars($_POST['zip']);
-      // $street = $_POST['street'];
-      // $city = $_POST['city'];
-      // $state = $_POST['state'];
-      // $zip = $_POST['zip'];
 
       // assemble the products and price
       $total_price = 0;
