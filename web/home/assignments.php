@@ -13,7 +13,7 @@
       require 'nav.php';
    ?>
    <h1>Assignments</h1>
-   <p>Coming soon...</p>
+   <a href="https://damp-reef-55379.herokuapp.com/prove/03/browse.php">Prove 03 - Shopping Cart</a>
  
 </body>
 </html>
