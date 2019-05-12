@@ -1,6 +1,9 @@
 <?php
    session_start();
-   // require ("products.php");
+   if (!is_array($_SESSION['cart']))
+   {
+      $_SESSION['cart'] = array();
+   }
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +26,13 @@
    <p>
    <?php
       foreach ($_SESSION['cart'] as $tie_name => $quantity) {
-         echo "$tie_name is a total of $products[$tie_name]<br>";
+         $price = $products[$tie_name]["price"];
+         $alt = $products[$tie_name]["alt"];
+         $src = $products[$tie_name]["src"];
+         echo "<img src=$src height=\"200\" width=\"200\" alt=$alt><br>";
+         // echo "$tie_name is a total of $price<br>";
+         // <img src="img/ties/87933513_650_main.jpg" id="tie1" height="200" width="200" alt="Pink and Blue Checkered">
       }
-      // foreach ($products as $product => $price) {
-      //    echo "$product";
-      // }
    ?>
    </p>
  

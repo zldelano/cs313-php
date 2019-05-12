@@ -1,6 +1,5 @@
 <?php
    session_start();
-   // require ("products.php");
    if (!is_array($_SESSION['cart']))
    {
       $_SESSION['cart'] = array();
