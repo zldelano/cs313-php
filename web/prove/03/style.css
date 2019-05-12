@@ -116,5 +116,7 @@ nav a::hover::before {
 }
 
 .selection .imgButtonPair button {
-    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
