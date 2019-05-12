@@ -35,7 +35,7 @@
          $alt = $products[$tie_name]["alt"];
          $src = $products[$tie_name]["src"];
          echo "<img src=$src height=\"200\" width=\"200\" alt=$alt><br>";
-         echo "<a href=\"browse.php?product=$tie_name\">Remove from Cart</a><br>";
+         echo "<a href=\"shopping_cart.php?product=$tie_name\">Remove from Cart</a><br>";
          // echo "$tie_name is a total of $price<br>";
          // <img src="img/ties/87933513_650_main.jpg" id="tie1" height="200" width="200" alt="Pink and Blue Checkered">
       }
