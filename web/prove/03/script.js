@@ -1,10 +1,5 @@
-$('.addToCart').on('click', function(e) {
-    var id = $(this).attr('id');
-    $.ajax({
-        type: 'POST',
-        url: './browse.php',
-        data: {
-            cart: id
-        }
-    });
+$('.addToCart').click(function() {
+    var itemId = $(this).attr("id");
+    var location = "./browse.php?action=additem&itemId=" + itemId;
+    window.location.href = location;
 });

@@ -1,5 +1,6 @@
 <?php
    session_start();
+   require ("products.php");
 ?>
 
 <!DOCTYPE html>
