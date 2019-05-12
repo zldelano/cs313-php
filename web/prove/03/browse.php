@@ -1,7 +1,10 @@
 <?php
    session_start();
    // require ("products.php");
-   // $_SESSION['cart'] = array();
+   if (!is_array($_SESSION['cart']))
+   {
+      $_SESSION['cart'] = array();
+   }
 ?>
 
 <!DOCTYPE html>
