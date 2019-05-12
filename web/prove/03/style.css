@@ -117,9 +117,10 @@ nav a::hover::before {
 }
 
 .selection .imgButtonPair img {
+    display: inline-block;
     width: 100%;
 }
 
 .selection {
-    text-align: center;
+    width: 80%;
 }
