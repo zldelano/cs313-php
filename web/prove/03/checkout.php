@@ -27,6 +27,7 @@
       <h2>Enter your address</h2>
       <form action="confirmation.php">
          Street: <input type="text" name="street" required><br>
+         City: <input type="text" name="city" required><br>
          State:  <input type="text" name="state" required><br>
          ZIP:  <input type="text" name="zip" required><br>
          <input type="submit" value="Submit">
@@ -34,6 +35,7 @@
    <?php
       $total_price = 0;
       foreach ($_SESSION['cart'] as $tie_name => $quantity) {
+         $price = $products[$tie_name]["price"];
          $total_price += $price;
       }
       echo "<br><br>Total price: $total_price"

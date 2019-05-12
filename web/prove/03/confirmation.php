@@ -27,9 +27,14 @@
       <form action="confirmation.php"></form>
    <?php
       // assemble the address
-      $street = htmlspecialchars($_POST['street']);
-      $state = htmlspecialchars($_POST['state']);
-      $zip = htmlspecialchars($_POST['zip']);
+      // $street = htmlspecialchars($_POST['street']);
+      // $city = htmlspecialchars($_POST['city']);
+      // $state = htmlspecialchars($_POST['state']);
+      // $zip = htmlspecialchars($_POST['zip']);
+      $street = $_POST['street'];
+      $city = $_POST['city'];
+      $state = $_POST['state'];
+      $zip = $_POST['zip'];
 
       // assemble the products and price
       $total_price = 0;
@@ -42,7 +47,7 @@
          echo "<a href=\"shopping_cart.php?product=$tie_name\">Remove from Cart</a><br>";
       }
       echo "<br><br>Total price: $total_price<br><br>";
-      echo "These products will be sent to $street, $state $zip<br><br>";
+      echo "These products will be sent to $street, $city $state $zip<br><br>";
       unset($_SESSION['cart']);
       session_end();
    ?>
