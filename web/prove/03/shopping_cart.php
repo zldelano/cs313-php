@@ -20,7 +20,12 @@
 <body>
    <?php
       require 'nav.php';
-      require 'products.php'
+      require 'products.php';
+
+      // if the query parameter is a product, remove it from the cart.
+      if (isset($_GET['product'])) {
+         unset($_SESSION["cart"][$_GET['product']]);
+      }
    ?>
    <h1>Shopping Cart</h1>
    <p>
@@ -30,6 +35,7 @@
          $alt = $products[$tie_name]["alt"];
          $src = $products[$tie_name]["src"];
          echo "<img src=$src height=\"200\" width=\"200\" alt=$alt><br>";
+         echo "<a href=\"browse.php?product=$tie_name\">Remove from Cart</a><br>";
          // echo "$tie_name is a total of $price<br>";
          // <img src="img/ties/87933513_650_main.jpg" id="tie1" height="200" width="200" alt="Pink and Blue Checkered">
       }
