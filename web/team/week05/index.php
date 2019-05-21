@@ -35,7 +35,7 @@
          // queries
          foreach ($db->query('SELECT book, chapter, verse, content FROM teach04_scripture') as $row)
          {
-            echo '<b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . $row['content'];
+            echo '<b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . $row['content'] . '<br>';
             echo '<br/>';
          }
       }
