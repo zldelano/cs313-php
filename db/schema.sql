@@ -103,3 +103,53 @@ CREATE TABLE service_job (
    FOREIGN KEY (technician) REFERENCES service_employee (employee_id),
    FOREIGN KEY (job_name)   REFERENCES service_job_info (job_name)
 );
+
+-- insert statements
+-- inserting into service_employee
+INSERT INTO service_employee
+   (name_first, name_second, role)
+VALUES
+   ('Adam', 'Powell', 'manager');
+
+INSERT INTO service_employee
+   (name_first, name_second, role)
+VALUES
+   ('Oscar', 'Gonzales', 'advisor');
+
+INSERT INTO service_employee
+   (name_first, name_second, role)
+VALUES
+   ('Chris', 'Toomey', 'advisor');
+
+INSERT INTO service_employee
+   (name_first, name_second, role)
+VALUES
+   ('Rob', 'Latimer', 'advisor');
+
+INSERT INTO service_employee
+   (name_first, name_second, role)
+VALUES
+   ('Ed', 'Tejeda', 'technician');
+
+-- inserting into service_address
+INSERT INTO service_address
+   (city, street, zip, state)
+VALUES
+   ('Redmond', '11115 156th PL NE', 98052, 'WA');
+
+-- inserting into service_customer
+INSERT INTO service_customer
+   (name_first, name_second, phone_primary, address_id)
+VALUES
+   ('Zach', 'Delano', 4252299246, (SELECT address_id FROM service_address WHERE street='11115 156th PL NE'));
+
+-- views & joins
+-- join: customer address
+SELECT
+   (sc.name_first, sc.name_second, sa.street, sa.apt_number, sa.city, sa.state, sa.zip)
+FROM
+   service_customer as sc
+JOIN
+   service_address as sa
+ON
+   sc.address_id = sa.address_id;
