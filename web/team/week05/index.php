@@ -16,7 +16,7 @@
       try
       {
          $book = '';
-         $id = null;
+         $the_id = null;
          if (isset($_POST['book'])) {
             $book =  htmlspecialchars($_POST['book']);
          }
