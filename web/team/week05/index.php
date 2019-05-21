@@ -59,7 +59,7 @@
          {
             $id = $row['id'];
             $scripture = $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
-            echo "<a href=team/week05/index.php?id=$id>" . $scripture . '</a>' .'<br>';
+            echo "<a href=index.php?id=$id>" . $scripture . '</a>' .'<br>';
             echo '<br/>';
          }
       }
