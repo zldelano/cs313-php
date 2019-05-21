@@ -17,6 +17,7 @@
       {
          $book = '';
          $the_id = null;
+
          if (isset($_POST['book'])) {
             $book =  htmlspecialchars($_POST['book']);
          }
@@ -70,6 +71,7 @@
 
          if (!is_null($the_id))
          {
+            echo $the_id . "<br>";
             echo "<h2>Content</h2>";
             $db->query("SELECT content FROM teach04_scripture WHERE id='$the_id'");
             $the_content = $row['content'];
