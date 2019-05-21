@@ -15,6 +15,11 @@
 
       try
       {
+         $book = '*';
+         if (isset($_POST['book'])) {
+            $book =  htmlspecialchars($_POST['book']);
+         }
+
          $dbUrl = getenv('DATABASE_URL');
 
          $dbOpts = parse_url($dbUrl);
@@ -33,7 +38,7 @@
          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
          // queries
-         foreach ($db->query('SELECT book, chapter, verse, content FROM teach04_scripture') as $row)
+         foreach ($db->query('SELECT book, chapter, verse, content FROM teach04_scripture WHERE book=$book') as $row)
          {
             echo '<b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . $row['content'] . '<br>';
             echo '<br/>';
@@ -44,7 +49,10 @@
          echo 'Error!: ' . $ex->getMessage();
          die();
       }
-   ?>
+      ?>
+      <form action="index.php" method="post">
+         Book: <input type="text" name="book">
+      </form>
  
 </body>
 </html>
