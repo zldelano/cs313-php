@@ -73,8 +73,8 @@
          {
             echo $the_id . "<br>";
             echo "<h2>Content</h2>";
-            $db->query("SELECT content FROM teach04_scripture WHERE id='$the_id'");
-            $the_content = $row['content'];
+            $the_row = $db->query("SELECT content FROM teach04_scripture WHERE id='$the_id'");
+            $the_content = $the_row['content'];
             echo "<p>$the_content</p>";
          }
       }
