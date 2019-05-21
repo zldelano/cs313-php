@@ -40,7 +40,7 @@
          if ($book == '')
             $the_query = 'SELECT book, chapter, verse, content FROM teach04_scripture';
          else
-            $the_query = "SELECT book, chapter, verse, content FROM teach04_scripture WHERE book=\'$book\''";
+            $the_query = "SELECT book, chapter, verse, content FROM teach04_scripture WHERE book=\'$book\'";
 
          // queries
          foreach ($db->query($the_query) as $row)
