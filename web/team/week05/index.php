@@ -15,7 +15,7 @@
 
       try
       {
-         $book = '*';
+         $book = '';
          if (isset($_POST['book'])) {
             $book =  htmlspecialchars($_POST['book']);
          }
@@ -37,8 +37,13 @@
          // to disable it for production environments.)
          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+         if ($book == '')
+            $the_query = 'SELECT book, chapter, verse, content FROM teach04_scripture';
+         else
+            $the_query = 'SELECT book, chapter, verse, content FROM teach04_scripture WHERE book=$book';
+
          // queries
-         foreach ($db->query('SELECT book, chapter, verse, content FROM teach04_scripture WHERE book=$book') as $row)
+         foreach ($db->query($the_query) as $row)
          {
             echo '<b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . $row['content'] . '<br>';
             echo '<br/>';
