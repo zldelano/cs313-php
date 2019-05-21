@@ -37,15 +37,29 @@
          // to disable it for production environments.)
          $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+         // if ($book == '')
+         //    $the_query = 'SELECT book, chapter, verse, content FROM teach04_scripture';
+         // else
+         //    $the_query = "SELECT book, chapter, verse, content FROM teach04_scripture WHERE book='$book'";
+
          if ($book == '')
-            $the_query = 'SELECT book, chapter, verse, content FROM teach04_scripture';
+            $the_query = 'SELECT id, book, chapter, verse, content FROM teach04_scripture';
          else
-            $the_query = "SELECT book, chapter, verse, content FROM teach04_scripture WHERE book='$book'";
+            $the_query = "SELECT id, book, chapter, verse, content FROM teach04_scripture WHERE book='$book'";
+
+         // queries
+         // foreach ($db->query($the_query) as $row)
+         // {
+         //    echo '<b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . $row['content'] . '<br>';
+         //    echo '<br/>';
+         // }
 
          // queries
          foreach ($db->query($the_query) as $row)
          {
-            echo '<b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . $row['content'] . '<br>';
+            $id = $row['id'];
+            $scripture = $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
+            echo "<a href=team/week05/index.php?id=$id>" . $scripture . '</a>' .'<br>';
             echo '<br/>';
          }
       }
