@@ -22,8 +22,7 @@
          }
 
          if (isset($_GET['id'])) {
-            $book =  htmlspecialchars($_POST['id']);
-            $the_id = $_GET['id'];
+            $the_id = htmlspecialchars($_GET['id']);
          }
 
          $dbUrl = getenv('DATABASE_URL');
