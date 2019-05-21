@@ -16,8 +16,14 @@
       try
       {
          $book = '';
+         $id = null;
          if (isset($_POST['book'])) {
             $book =  htmlspecialchars($_POST['book']);
+         }
+
+         if (isset($_GET['id'])) {
+            $book =  htmlspecialchars($_POST['id']);
+            $the_id = $_GET['id'];
          }
 
          $dbUrl = getenv('DATABASE_URL');
@@ -61,6 +67,14 @@
             $scripture = $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
             echo "<a href=index.php?id=$id>" . $scripture . '</a>' .'<br>';
             echo '<br/>';
+         }
+
+         if (!is_null($the_id))
+         {
+            echo "<h2>Content</h2>";
+            $db->query("SELECT content FROM teach04_scripture WHERE id='$the_id'");
+            $the_content = $row['content'];
+            echo "<p>$the_content</p>";
          }
       }
       catch (PDOException $ex)
