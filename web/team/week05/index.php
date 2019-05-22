@@ -81,6 +81,7 @@
             // $the_row = $db->query("SELECT content FROM teach04_scripture WHERE id='$the_id'");
             $the_content = $the_row['content'];
             echo var_dump($the_content);
+            echo var_dump($the_row);
             echo "<p>$the_content</p>";
          }
       }
