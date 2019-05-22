@@ -68,20 +68,19 @@
             echo "<a href=index.php?id=$id>" . $scripture . '</a>' .'<br>';
             echo '<br/>';
          }
-
          
          if (!is_null($the_id))
          {
-            $stmt = $db->prepare('SELECT content FROM teach04_scripture WHERE id=:id');
+            $stmt = $db->prepare('SELECT content, book, chapter, verse FROM teach04_scripture WHERE id=:id');
             $stmt->bindValue(':id', $the_id, PDO::PARAM_STR);
             $stmt->execute();
             $the_row = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            // echo $the_id . "<br>";
             echo "<h2>Content</h2>";
-            // $the_row = $db->query("SELECT content FROM teach04_scripture WHERE id='$the_id'");
+            $the_book    = $the_row[0]['book'];
+            $the_chapter = $the_row[0]['chapter'];
+            $the_verse   = $the_row[0]['verse'];
             $the_content = $the_row[0]['content'];
-            echo var_dump($the_content);
-            echo var_dump($the_row);
+            echo "<h3>$the_book $the_chapter:$the_verse</h3>";
             echo "<p>$the_content</p>";
          }
       }
