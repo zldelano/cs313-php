@@ -11,6 +11,7 @@
 <body>
    <?php
       require 'nav_login.php';
+      require 'db_connect.php';
    ?>
    <h1>Adam's Service Drive</h1>
 

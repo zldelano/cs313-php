@@ -11,6 +11,7 @@
 <body>
    <?php
       require 'nav.php';
+      require 'db_connect.php';
    ?>
    <h1>Adam's Service Drive</h1>
    <?php
@@ -45,7 +46,7 @@
       }
       // echo "Job #1:         <input type=\"text\" name=$job_name_field><br>";
       // echo "Job #1 Tech:    <input type=\"text\" name=$tech_name_field><br>";
-      
+      echo "</form>"
    ?>
 </body>
 </html>
