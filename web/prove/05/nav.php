@@ -4,7 +4,7 @@
         <nav>
             <ul>
                 <?php
-                    echo "<li><a href='./index.php'>Home</a></li>";
+                    echo "<li><a href='./index.php'>Submit New Service</a></li>";
                 ?>
             </ul>
         </nav>

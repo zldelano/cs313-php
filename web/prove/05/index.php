@@ -11,9 +11,17 @@
 <body>
    <?php
       require 'nav.php';
-
    ?>
    <h1>Adam's Service Drive</h1>
+   
+   <form action="index.php" method="post">
+   VIN:            <input type="text" name="new_service_vin"><br>
+   Customer phone: <input type="text" name="new_service_phone"><br>
+   <textarea name="new_service_notes" id="notes">Notes</textarea><br>
+   </form>
  
+   <?php
+      // not sure what I'm going to put here
+   ?>
 </body>
 </html>
