@@ -26,7 +26,7 @@
          $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
          // get the list of technicians the advisor can select from
-         $stmt = $db->prepare('SELECT name_first, name_second, employee_username FROM service_employee WHERE role=\'technician\'');
+         $stmt = $db->prepare('SELECT name_first, name_second, username FROM service_employee WHERE role=\'technician\'');
          $stmt->execute();
          $service_employee_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }

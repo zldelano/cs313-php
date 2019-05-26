@@ -65,7 +65,7 @@ CREATE TABLE service_vehicle (
 );
 
 CREATE TABLE service_employee (
-   username VARCHAR(20)    NOT NULL,
+   username          VARCHAR(20)    NOT NULL,
    name_first        VARCHAR(30)    NOT NULL,
    name_second       VARCHAR(30)    NOT NULL,
    role              VARCHAR(15)    NOT NULL,
