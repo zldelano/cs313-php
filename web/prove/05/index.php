@@ -13,15 +13,39 @@
       require 'nav.php';
    ?>
    <h1>Adam's Service Drive</h1>
-   
-   <form action="index.php" method="post">
-   VIN:            <input type="text" name="new_service_vin"><br>
-   Customer phone: <input type="text" name="new_service_phone"><br>
-   <textarea name="new_service_notes" id="notes">Notes</textarea><br>
-   </form>
- 
    <?php
-      // not sure what I'm going to put here
+      $job_name_field='newservice_jobs[]';
+      $tech_name_field='new_service_job_tech[]';
+
+      // get the list of jobs the advisor can select from
+      $stmt = $db->prepare('SELECT job_name, price FROM service_job_info');
+      $stmt->execute();
+      $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      // $the_chapter = $the_row[0]['chapter'];
+            // $the_verse   = $the_row[0]['verse'];
+            // $the_content = $the_row[0]['content'];
+            // echo "<h3>$the_book $the_chapter:$the_verse</h3>";
+            // echo "<p>$the_content</p>";
+
+      echo '<form action="index.php" method="post">';
+      echo 'VIN:            <input type="text" name="new_service_vin"><br>';
+      echo 'Customer phone: <input type="text" name="new_service_phone"><br>';
+      echo '<textarea name="new_service_notes" id="notes">Notes</textarea><br>';
+      
+      $ji_length=sizeof($service_job_info_rows);
+      for ($i = 1; i <= $ji_length; $i++) {
+         echo "<select name=$job_name_field>";
+         foreach ($service_job_info_rows as $ji)
+         {
+            $option_value=$ji['job_name'];
+            echo "<option value=$i>$option_value</option>";
+         }
+         echo "</select>";
+      }
+      // echo "Job #1:         <input type=\"text\" name=$job_name_field><br>";
+      // echo "Job #1 Tech:    <input type=\"text\" name=$tech_name_field><br>";
+      
    ?>
 </body>
 </html>
