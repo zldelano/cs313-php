@@ -38,14 +38,14 @@
       
       $ji_length=sizeof($service_job_info_rows);
       echo "the length of the query is $ji_length<br>";
-      for ($i = 1; i <= $ji_length; $i++) {
-         // echo "<select name=$job_name_field>";
-         // foreach ($service_job_info_rows as $ji)
-         // {
-         //    $option_value=$ji['job_name'];
-         //    echo "<option value=$i>$option_value</option>";
-         // }
-         // echo "</select>";
+      for ($i = 1; $i <= $ji_length; $i++) {
+         echo "<select name=$job_name_field>";
+         foreach ($service_job_info_rows as $ji)
+         {
+            $option_value=$ji['job_name'];
+            echo "<option value=$i>$option_value</option>";
+         }
+         echo "</select>";
          echo "value of $i<br>";
       }
       // echo "Job #1:         <input type=\"text\" name=$job_name_field><br>";
