@@ -56,7 +56,7 @@
          echo "</select><br>";
 
          // technicians
-         echo "Assigned Technician";
+         echo "Assigned Technician:<br>";
          echo "<select name=$tech_name_field>";
          echo "<option value=0>None</option>";
          foreach ($service_employee_rows as $tech)
