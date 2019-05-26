@@ -45,8 +45,7 @@
             $option_value=$ji['job_name'];
             echo "<option value=$i>$option_value</option>";
          }
-         echo "</select>";
-         echo "value of $i<br>";
+         echo "</select><br>";
       }
       // echo "Job #1:         <input type=\"text\" name=$job_name_field><br>";
       // echo "Job #1 Tech:    <input type=\"text\" name=$tech_name_field><br>";
