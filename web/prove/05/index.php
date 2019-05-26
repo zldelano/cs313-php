@@ -24,6 +24,11 @@
          $stmt = $db->prepare('SELECT job_name, cost FROM service_job_info');
          $stmt->execute();
          $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+         // get the list of technicians the advisor can select from
+         $stmt = $db->prepare('SELECT name_first, name_second, employee_id FROM service_employee WHERE role=\'technician\'');
+         $stmt->execute();
+         $service_employee_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
       catch (PDOException $ex)
       {
@@ -39,11 +44,24 @@
       $ji_length=sizeof($service_job_info_rows);
       echo "the length of the query is $ji_length<br>";
       for ($i = 1; $i <= $ji_length; $i++) {
+         // jobs
          echo "<select name=$job_name_field>";
+         echo "<option value=0>None</option>";
          foreach ($service_job_info_rows as $ji)
          {
-            $option_value=$ji['job_name'];
-            echo "<option value=$i>$option_value</option>";
+            $job_name=$ji['job_name'];
+            echo "<option value=$i>$job_name</option>";
+         }
+         echo "</select><br>";
+
+         // technicians
+         echo "<select name=$tech_name_field>";
+         echo "<option value=0>None</option>";
+         foreach ($service_employee_rows as $tech)
+         {
+            $tech_name_first=$tech['name_first'];
+            $tech_name_second=$tech['name_second'];
+            echo "<option value=$i>$tech_name_second, $tech_name_first</option>";
          }
          echo "</select><br>";
       }
