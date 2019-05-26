@@ -9,14 +9,11 @@
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <h1>Adam's Service Drive</h1>
    <?php
       require 'nav.php';
 
    ?>
-   <!-- <form action="index.php" method="post">
-   Book: <input type="text" name="book">
-   </form> -->
+   <h1>Adam's Service Drive</h1>
  
 </body>
 </html>
