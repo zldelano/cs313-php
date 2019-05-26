@@ -18,16 +18,18 @@
       $job_name_field='newservice_jobs[]';
       $tech_name_field='new_service_job_tech[]';
 
-      // get the list of jobs the advisor can select from
-      $stmt = $db->prepare('SELECT job_name, price FROM service_job_info');
-      $stmt->execute();
-      $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-      // $the_chapter = $the_row[0]['chapter'];
-            // $the_verse   = $the_row[0]['verse'];
-            // $the_content = $the_row[0]['content'];
-            // echo "<h3>$the_book $the_chapter:$the_verse</h3>";
-            // echo "<p>$the_content</p>";
+      $service_job_info_rows = null;
+      try {
+         // get the list of jobs the advisor can select from
+         $stmt = $db->prepare('SELECT job_name, price FROM service_job_info');
+         $stmt->execute();
+         $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      }
+      catch (PDOException $ex)
+      {
+         echo 'Error!: ' . $ex->getMessage();
+         die();
+      }
 
       echo '<form action="index.php" method="post">';
       echo 'VIN:            <input type="text" name="new_service_vin"><br>';
@@ -36,7 +38,7 @@
       
       $ji_length=sizeof($service_job_info_rows);
       echo "the length of the query is $ji_length";
-      // for ($i = 1; i <= $ji_length; $i++) {
+      for ($i = 1; i <= $ji_length; $i++) {
       //    echo "<select name=$job_name_field>";
       //    foreach ($service_job_info_rows as $ji)
       //    {
@@ -44,7 +46,8 @@
       //       echo "<option value=$i>$option_value</option>";
       //    }
       //    echo "</select>";
-      // }
+      echo "test";
+      }
       // echo "Job #1:         <input type=\"text\" name=$job_name_field><br>";
       // echo "Job #1 Tech:    <input type=\"text\" name=$tech_name_field><br>";
       echo "</form>"
