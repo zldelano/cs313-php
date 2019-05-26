@@ -40,11 +40,12 @@
       echo 'VIN:            <input type="text" name="new_service_vin"><br>';
       echo 'Customer phone: <input type="text" name="new_service_phone"><br>';
       echo '<textarea name="new_service_notes" id="notes">Notes</textarea><br>';
-      
+      echo "The list of jobs and technicians<br>";
+
       $ji_length=sizeof($service_job_info_rows);
-      echo "the length of the query is $ji_length<br>";
       for ($i = 1; $i <= $ji_length; $i++) {
          // jobs
+         echo "Job:<br>";
          echo "<select name=$job_name_field>";
          echo "<option value=0>None</option>";
          foreach ($service_job_info_rows as $ji)
@@ -55,6 +56,7 @@
          echo "</select><br>";
 
          // technicians
+         echo "Assigned Technician";
          echo "<select name=$tech_name_field>";
          echo "<option value=0>None</option>";
          foreach ($service_employee_rows as $tech)
@@ -63,7 +65,7 @@
             $tech_name_second=$tech['name_second'];
             echo "<option value=$i>$tech_name_second, $tech_name_first</option>";
          }
-         echo "</select><br>";
+         echo "</select><br><br>";
       }
       // echo "Job #1:         <input type=\"text\" name=$job_name_field><br>";
       // echo "Job #1 Tech:    <input type=\"text\" name=$tech_name_field><br>";
