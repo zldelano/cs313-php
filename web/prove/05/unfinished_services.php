@@ -41,12 +41,14 @@
          $us_customer_email   = $unfinished_service['customer_email'];
          $us_job_name         = $unfinished_service['job_name'];
          $us_technician       = $unfinished_service['technician'];
+         $us_job_id           = $unfinished_service['job_id'];
 
          // populate the table cells
          echo "<tr>";
          echo "<td>$us_customer_email</td>";
          echo "<td>$us_job_name</td>";
          echo "<td>$us_technician</td>";
+         echo "<td><form action=\"unfinished_services.php\" method=\"post\"><input type=\"submit\" name=$job_id value=\"finish job\"></form></td>";
          echo "</tr>";
       }
       echo '</table>';

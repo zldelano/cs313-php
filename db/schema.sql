@@ -189,6 +189,7 @@ CREATE VIEW unfinished_services AS
       ss.service_id     AS service_id,
       ss.customer_email AS customer_email,
       sj.job_name       AS job_name,
+      sj.job_id         AS job_id,
       sj.technician     AS technician,
       ji.cost           AS cost,
       sj.time_end       AS time_end
