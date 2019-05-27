@@ -13,20 +13,15 @@
       require 'nav.php';
       require 'db_connect.php';
    ?>
-   <h1>New Service</h1>
-   <?php
-      try {
-         // get the list of jobs the advisor can select from
-         // $stmt = $db->prepare('SELECT * FROM unfinished_services');
-         // $stmt->execute();
-         // $unfinished_service_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      }
-      catch (PDOException $ex)
-      {
-         // echo 'Error!: ' . $ex->getMessage();
-         // die();
-      }
-
-   ?>
+   <h1>New Car</h1>
+   <form action="new_car.php" method="post">
+      VIN:           <input type="text" name="newcar_vin"><br>
+      Color:         <input type="text" name="newcar_color"><br>
+      Make:          <input type="text" name="newcar_make"><br>
+      Model:         <input type="text" name="newcar_model"><br>
+      Year:          <input type="text" name="newcar_year"><br>
+      Owner email:   <input type="text" name="newcar_owner"><br>
+      <input type="submit"><br>
+   </form>
 </body>
 </html>
