@@ -123,6 +123,10 @@ nav a::hover::before {
     width: 100%;
 }
 
+body table {
+    color: #ededed;
+}
+
 .selection .imgButtonPair {
     width: 200px;
     padding-bottom: 20px;
