@@ -13,7 +13,7 @@
       require 'nav.php';
       require 'db_connect.php';
    ?>
-   <h1>New Service</h1>
+   <h1>Unfinished Services</h1>
    <?php
       try {
          // get the list of jobs the advisor can select from

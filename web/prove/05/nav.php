@@ -4,6 +4,8 @@
         <nav>
             <ul>
                 <?php
+                    echo "<li><a href='./new_customer.php'>New Customer</a></li>";
+                    echo "<li><a href='./new_car.php'>New Car</a></li>";
                     echo "<li><a href='./index.php'>Submit New Service</a></li>";
                     echo "<li><a href='./unfinished_services.php'>Unfinished Services</a></li>";
                     echo "<li><a href='./login.php'>Logout</a></li>";
