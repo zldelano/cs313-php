@@ -17,15 +17,39 @@
    <?php
       try {
          // get the list of jobs the advisor can select from
-         $stmt = $db->prepare('SELECT job_name, cost FROM service_job_info');
+         $stmt = $db->prepare('SELECT * FROM unfinished_services');
          $stmt->execute();
-         $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         $unfinished_service_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
       catch (PDOException $ex)
       {
          echo 'Error!: ' . $ex->getMessage();
          die();
       }
+
+      // initialize these now so we can check for them right away in the loop
+      $us_time_end         = null;
+      $us_customer_email   = null;
+      $us_technician       = null;
+
+      // go over the unfinished services
+      echo '<table style="width:100%">';
+      echo '<tr><th>Customer</th><th>Job</th><th>Technician</th></tr>';
+      foreach ($unfinished_service_rows as $unfinished_service)
+      {
+         $us_time_end         = $unfinished_service['time_end'];
+         $us_customer_email   = $unfinished_service['customer_email'];
+         $us_job_name         = $unfinished_service['job_name'];
+         $us_technician       = $unfinished_service['technician'];
+
+         // populate the table cells
+         echo "<tr>";
+         echo "<td>$us_customer_email</td>";
+         echo "<td>$us_job_name</td>";
+         echo "<td>$us_technician</td>";
+         echo "</tr>";
+      }
+      echo '</table>';
    ?>
 </body>
 </html>

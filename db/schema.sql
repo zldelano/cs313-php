@@ -186,8 +186,12 @@ VALUES
 -- view: unfinished services
 CREATE VIEW unfinished_services AS
    SELECT
-      ss.service_id AS service_id, ss.customer_email AS customer_email, sj.job_name AS job_name, sj.technician AS technician, ji.cost AS cost, sj.time_end AS time_end
-      -- ss.service_id, ss.customer_email, sj.job_name, sj.technician, ji.cost, sj.time_end
+      ss.service_id     AS service_id,
+      ss.customer_email AS customer_email,
+      sj.job_name       AS job_name,
+      sj.technician     AS technician,
+      ji.cost           AS cost,
+      sj.time_end       AS time_end
    FROM
       service_service AS ss
    LEFT JOIN service_job      AS sj ON ss.service_id=sj.service_id
