@@ -12,13 +12,17 @@
    <?php
       require 'nav.php';
       require 'db_connect.php';
+
+      // set session vars
+      $_SESSION['user'] = htmlspecialchars($_POST['user']);
    ?>
-   <h1>Adam's Service Drive</h1>
+   <h1>New Service</h1>
    <?php
       $job_name_field='newservice_jobs[]';
       $tech_name_field='new_service_job_tech[]';
 
       $service_job_info_rows = null;
+      $service_employee_rows = null;
       try {
          // get the list of jobs the advisor can select from
          $stmt = $db->prepare('SELECT job_name, cost FROM service_job_info');
@@ -38,7 +42,7 @@
 
       echo '<form action="index.php" method="post">';
       echo 'VIN:            <input type="text" name="new_service_vin"><br>';
-      echo 'Customer phone: <input type="text" name="new_service_phone"><br>';
+      echo 'Customer email: <input type="text" name="new_service_email"><br>';
       echo '<textarea name="new_service_notes" id="notes">Notes</textarea><br>';
       echo "The list of jobs and technicians<br>";
 
@@ -67,8 +71,6 @@
          }
          echo "</select><br><br>";
       }
-      // echo "Job #1:         <input type=\"text\" name=$job_name_field><br>";
-      // echo "Job #1 Tech:    <input type=\"text\" name=$tech_name_field><br>";
       echo "</form>"
    ?>
 </body>

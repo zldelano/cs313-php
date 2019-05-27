@@ -10,24 +10,22 @@
 </head>
 <body>
    <?php
-      require 'nav_login.php';
+      require 'nav.php';
       require 'db_connect.php';
-
-      // logout if logged in
-      if (isset($_SESSION['user']))
-      {
-         unset($_SESSION['user']);
-         session_destroy();
-      }
-
-      // upon login...
-      session_start();
    ?>
-   <h1>Adam's Service Drive</h1>
-
-   <form action="index.php" method="post">
-   Username: <input type="text" name="user">
-   </form>
- 
+   <h1>New Service</h1>
+   <?php
+      try {
+         // get the list of jobs the advisor can select from
+         $stmt = $db->prepare('SELECT job_name, cost FROM service_job_info');
+         $stmt->execute();
+         $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      }
+      catch (PDOException $ex)
+      {
+         echo 'Error!: ' . $ex->getMessage();
+         die();
+      }
+   ?>
 </body>
 </html>
