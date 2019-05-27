@@ -33,7 +33,7 @@
       $us_technician       = null;
 
       // go over the unfinished services
-      echo '<table style="width:100%">';
+      echo '<table style="width:80%">';
       echo '<tr><th>Customer</th><th>Job</th><th>Technician</th></tr>';
       foreach ($unfinished_service_rows as $unfinished_service)
       {
