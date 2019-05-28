@@ -33,7 +33,7 @@
          foreach ($rows_topic as $topic) {
             $topic_name = $topic['name'];
             $topic_id = $topic['id'];
-            echo "<input type='checkbox' name='$topic_name' id='$topic_id'>";
+            echo "$topic_name <input type='checkbox' name='$topic_name' id='$topic_id'><br>";
          }
          echo "</td></tr>";
          echo "</table>";
