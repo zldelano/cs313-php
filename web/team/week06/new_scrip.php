@@ -12,7 +12,30 @@
    <!-- <input type="checkbox" name="" id=""> -->
    <?php
       require 'nav.php';
-      echo "<h1>Scripture Resources</h1>";      
+      echo "<h1>Scripture Resources</h1>";
+
+      function gen_uuid() {
+         return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+             // 32 bits for "time_low"
+             mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+     
+             // 16 bits for "time_mid"
+             mt_rand( 0, 0xffff ),
+     
+             // 16 bits for "time_hi_and_version",
+             // four most significant bits holds version number 4
+             mt_rand( 0, 0x0fff ) | 0x4000,
+     
+             // 16 bits, 8 bits for "clk_seq_hi_res",
+             // 8 bits for "clk_seq_low",
+             // two most significant bits holds zero and one for variant DCE1.1
+             mt_rand( 0, 0x3fff ) | 0x8000,
+     
+             // 48 bits for "node"
+             mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+         );
+     }
+   
       try
       {
          require 'db_connect.php';
@@ -29,18 +52,14 @@
             $newscrip_chapter = $_POST['newscrip_chapter'];
             $newscrip_verse = $_POST['newscrip_verse'];
             $newscrip_content = $_POST['newscrip_content'];
-            $newscrip_id = sprintf('%05d-%05d-%05d-%05d',
-               mt_rand( 0, 99999),
-               mt_rand( 0, 99999),
-               mt_rand( 0, 99999),
-               mt_rand( 0, 99999)
-            );
+            $newscrip_id = gen_uuid();
             $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture (id, book, chapter, verse, content)
                                            VALUES ($newscrip_id, $newcrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)");
             $newscrip_stmt->execute();
 
             foreach ($newscrip_topics as $topic)
-            {
+            { 
+               echo "topic: $topic<br>";
                $scrip_topic_stmt = $db->prepare("INSERT INTO teach06_join_scripture_topic (scripture_id, topic_id)
                                                  VALUES ($newscrip_id, $topic)");
                $scrip_topic_stmt->execute();
