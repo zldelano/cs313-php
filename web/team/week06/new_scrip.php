@@ -66,9 +66,6 @@
          die();
       }
       ?>
-      <form action="index.php" method="post">
-         Book: <input type="text" name="book">
-      </form>
  
 </body>
 </html>
