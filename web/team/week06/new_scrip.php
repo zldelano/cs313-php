@@ -25,19 +25,17 @@
 
          echo "<form action='index.php' method='post'>";
          echo "<table style='width:80%'>";
-         echo "<tr>";
-         echo "<td>Book</td><td><input type='text' name='newscrip_book'></td>";
-         echo "<td>Chapter</td><td><input type='text' name='newscrip_chapter'></td>";
-         echo "<td>Verse</td><td><input type='text' name='newscrip_verse'></td>";
-         echo "<td>Content</td><td><textarea name='newscrip_verse'>Content of scripture...</textarea></td>";
-         echo "<td>Topics</td><td>";
+         echo "<tr><td>Book</td><td><input type='text' name='newscrip_book'></td></tr>";
+         echo "<tr><td>Chapter</td><td><input type='text' name='newscrip_chapter'></td></tr>";
+         echo "<tr><td>Verse</td><td><input type='text' name='newscrip_verse'></td></tr>";
+         echo "<tr><td>Content</td><td><textarea name='newscrip_verse'>Content of scripture...</textarea></td></tr>";
+         echo "<tr><td>Topics</td><td></tr>";
          foreach ($rows_topic as $topic) {
             $topic_name = $topic['name'];
             $topic_id = $topic['id'];
-            echo "<input type='checkbox' name='$topic_name' id='$topic_id'><br>";
+            echo "<input type='checkbox' name='$topic_name' id='$topic_id'>";
          }
-         echo "</td>";
-         echo "</tr>";
+         echo "</td></tr>";
          echo "</table>";
          echo "</form>";
       }
