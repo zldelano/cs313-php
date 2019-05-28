@@ -29,7 +29,7 @@
          echo "<tr><td>Chapter</td><td><input type='text' name='newscrip_chapter'></td></tr>";
          echo "<tr><td>Verse</td><td><input type='text' name='newscrip_verse'></td></tr>";
          echo "<tr><td>Content</td><td><textarea name='newscrip_verse'>Content of scripture...</textarea></td></tr>";
-         echo "<tr><td>Topics</td><td></tr>";
+         echo "<tr><td>Topics</td><td>";
          foreach ($rows_topic as $topic) {
             $topic_name = $topic['name'];
             $topic_id = $topic['id'];
