@@ -22,10 +22,10 @@
          $stmt->execute();
          $rows_topic = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-         if (isset($_POST['topics[]']))
+         if (isset($_POST['topics']))
          {
             echo "Have we hit the condition where topics is set?<br>";
-            $newscrip_topics = $_POST['topics[]'];
+            $newscrip_topics = $_POST['topics'];
             $newscrip_book = $_POST['newscrip_book'];
             $newscrip_chapter = $_POST['newscrip_chapter'];
             $newscrip_verse = $_POST['newscrip_verse'];
