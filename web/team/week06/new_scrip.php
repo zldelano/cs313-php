@@ -29,16 +29,20 @@
             $newscrip_chapter = $_POST['newscrip_chapter'];
             $newscrip_verse = $_POST['newscrip_verse'];
             $newscrip_content = $_POST['newscrip_content'];
-            $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture (book, chapter, verse, content)
-                                           VALUES ($newcrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)");
+            $newscrip_id = sprintf('%05d-%05d-%05d-%05d',
+               mt_rand( 0, 99999),
+               mt_rand( 0, 99999),
+               mt_rand( 0, 99999),
+               mt_rand( 0, 99999)
+            );
+            $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture (id, book, chapter, verse, content)
+                                           VALUES ($newscrip_id, $newcrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)");
             $newscrip_stmt->execute();
-
-            $last_newscrip_id = $db->lastInsertId('id');
 
             foreach ($newscrip_topics as $topic)
             {
                $scrip_topic_stmt = $db->prepare("INSERT INTO teach06_join_scripture_topic (scripture_id, topic_id)
-                                                 VALUES ($last_newscrip_id, $topic)");
+                                                 VALUES ($newscrip_id, $topic)");
                $scrip_topic_stmt->execute();
             }
          }
