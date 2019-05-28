@@ -9,11 +9,10 @@
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <h1>Scripture Resources</h1>
    <!-- <input type="checkbox" name="" id=""> -->
    <?php
       require 'nav.php';
-
+      echo "<h1>Scripture Resources</h1>";      
       try
       {
          require 'db_connect.php';
@@ -23,7 +22,28 @@
          $stmt->execute();
          $rows_topic = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-         echo "<form action='index.php' method='post'>";
+         if (isset($_POST['topics[]']))
+         {
+            $newscrip_topics = $_POST['topics[]'];
+            $newscrip_book = $_POST['newscrip_book'];
+            $newscrip_chapter = $_POST['newscrip_chapter'];
+            $newscrip_verse = $_POST['newscrip_verse'];
+            $newscrip_content = $_POST['newscrip_content'];
+            $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture ('book', 'chapter', 'verse', 'content')
+                                           VALUES ($newcrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)");
+            $newscrip_stmt->execute();
+
+            $last_newscrip_id = $db->lastInsertId('id');
+
+            foreach ($newscrip_topics as $topic)
+            {
+               $scrip_topic_stmt = $db->prepare("INSERT INTO teach06_join_scripture_topic ('scripture_id', 'topic_id')
+                                                 VALUES ($last_newscrip_id, $topic)");
+               $scrip_topic_stmt->execute();
+            }
+         }
+
+         echo "<form action='new_scrip.php' method='post'>";
          echo "<table style='width:80%'>";
          echo "<tr><td>Book</td><td><input type='text' name='newscrip_book'></td></tr>";
          echo "<tr><td>Chapter</td><td><input type='text' name='newscrip_chapter'></td></tr>";
@@ -33,10 +53,11 @@
          foreach ($rows_topic as $topic) {
             $topic_name = $topic['name'];
             $topic_id = $topic['id'];
-            echo "$topic_name <input type='checkbox' name='$topic_name' id='$topic_id'><br>";
+            echo "<input type='checkbox' name='topics[]' value='$topic_id'> $topic_name<br>";
          }
          echo "</td></tr>";
          echo "</table>";
+         echo "<input type='submit'>";
          echo "</form>";
       }
       catch (PDOException $ex)

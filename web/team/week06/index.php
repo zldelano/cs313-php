@@ -9,9 +9,9 @@
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <h1>Scripture Resources</h1>
    <?php
       require 'nav.php';
+      echo "<h1>Scripture Resources</h1>";
       
       try
       {
