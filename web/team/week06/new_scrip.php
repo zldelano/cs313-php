@@ -24,6 +24,7 @@
 
          if (isset($_POST['topics[]']))
          {
+            echo "Have we hit the condition where topics is set?<br>";
             $newscrip_topics = $_POST['topics[]'];
             $newscrip_book = $_POST['newscrip_book'];
             $newscrip_chapter = $_POST['newscrip_chapter'];
@@ -40,6 +41,7 @@
                $scrip_topic_stmt = $db->prepare("INSERT INTO teach06_join_scripture_topic ('scripture_id', 'topic_id')
                                                  VALUES ($last_newscrip_id, $topic)");
                $scrip_topic_stmt->execute();
+               echo "$topic was selected<br>";
             }
          }
 
