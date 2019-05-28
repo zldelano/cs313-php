@@ -53,6 +53,13 @@
             $newscrip_verse = $_POST['newscrip_verse'];
             $newscrip_content = $_POST['newscrip_content'];
             $newscrip_id = gen_uuid();
+            echo "debug topics: $newscrip_topics<br>";
+            echo "debug book: $newscrip_book<br>";
+            echo "debug chapter: $newscrip_chapter<br>";
+            echo "debug verse: $newscrip_verse<br>";
+            echo "debug content: $newscrip_content<br>";
+            echo "debug id: $newscrip_id<br>";
+
             $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture (id, book, chapter, verse, content)
                                            VALUES ($newscrip_id, $newcrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)");
             $newscrip_stmt->execute();
