@@ -12,9 +12,10 @@
    <h1>Scripture Resources</h1>
    <?php
       require 'nav.php';
-
+      
       try
       {
+         require 'db_connect.php';
          $book = '';
          $the_id = null;
 
@@ -26,39 +27,10 @@
             $the_id = htmlspecialchars($_GET['id']);
          }
 
-         $dbUrl = getenv('DATABASE_URL');
-
-         $dbOpts = parse_url($dbUrl);
-
-         $dbHost = $dbOpts["host"];
-         $dbPort = $dbOpts["port"];
-         $dbUser = $dbOpts["user"];
-         $dbPassword = $dbOpts["pass"];
-         $dbName = ltrim($dbOpts["path"],'/');
-
-         $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-
-         // this line makes PDO give us an exception when there are problems,
-         // and can be very helpful in debugging! (But you would likely want
-         // to disable it for production environments.)
-         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-         // if ($book == '')
-         //    $the_query = 'SELECT book, chapter, verse, content FROM teach04_scripture';
-         // else
-         //    $the_query = "SELECT book, chapter, verse, content FROM teach04_scripture WHERE book='$book'";
-
          if ($book == '')
-            $the_query = 'SELECT id, book, chapter, verse, content FROM teach04_scripture';
+            $the_query = 'SELECT id, book, chapter, verse, content FROM teach06_scripture';
          else
-            $the_query = "SELECT id, book, chapter, verse, content FROM teach04_scripture WHERE book='$book'";
-
-         // queries
-         // foreach ($db->query($the_query) as $row)
-         // {
-         //    echo '<b>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . '</b> - ' . $row['content'] . '<br>';
-         //    echo '<br/>';
-         // }
+            $the_query = "SELECT id, book, chapter, verse, content FROM teach06_scripture WHERE book='$book'";
 
          // queries
          foreach ($db->query($the_query) as $row)
@@ -71,7 +43,7 @@
          
          if (!is_null($the_id))
          {
-            $stmt = $db->prepare('SELECT content, book, chapter, verse FROM teach04_scripture WHERE id=:id');
+            $stmt = $db->prepare('SELECT content, book, chapter, verse FROM teach06_scripture WHERE id=:id');
             $stmt->bindValue(':id', $the_id, PDO::PARAM_STR);
             $stmt->execute();
             $the_row = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -4,8 +4,8 @@
         <nav>
             <ul>
                 <?php
-                    // echo "<li><a href='./about_me.php'>About Me</a></li>";
-                    // echo "<li><a href='./assignments.php'>Assignments</a></li>";
+                    echo "<li><a href='./index.php'>Scripture Index</a></li>";
+                    echo "<li><a href='./new_scrip.php'>New Scripture</a></li>";
                 ?>
             </ul>
         </nav>
