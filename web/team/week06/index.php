@@ -45,9 +45,14 @@
                              WHERE jst.scripture_id='$id'";
             $scripture = $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
             echo "<a href=index.php?id=$id>" . $scripture . '</a>' .'<br>';
+            $putcomma = false;
             foreach ($db->query($topics_query) as $topics_row)
             {
-               echo $topics_row['name'] . ", ";
+               if ($putcomma==false)
+                  $putcomma=true;
+               else
+                  echo ", ";
+               echo $topics_row['name'];
             }
             echo '<br/>';
          }
