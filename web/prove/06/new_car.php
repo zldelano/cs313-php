@@ -12,20 +12,12 @@
    <?php
       require 'nav.php';
       
-      if (len($_POST) > 0)
+      if (sizeof($_POST) > 0)
       {
          try
          {
             // only connect if the user submitted a form
-            $dbUrl = getenv('DATABASE_URL');
-            $dbOpts = parse_url($dbUrl);
-            $dbHost = $dbOpts["host"];
-            $dbPort = $dbOpts["port"];
-            $dbUser = $dbOpts["user"];
-            $dbPassword = $dbOpts["pass"];
-            $dbName = ltrim($dbOpts["path"],'/');
-            $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            require('db_connect.php');
 
             // away from db setup and onto statements
             $newcar_stmt = $db->prepare("INSERT INTO service_vehicle
