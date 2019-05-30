@@ -17,8 +17,17 @@
          try
          {
             // only connect if the user submitted a form
-            require 'db_connect.php';
+            $dbUrl = getenv('DATABASE_URL');
+            $dbOpts = parse_url($dbUrl);
+            $dbHost = $dbOpts["host"];
+            $dbPort = $dbOpts["port"];
+            $dbUser = $dbOpts["user"];
+            $dbPassword = $dbOpts["pass"];
+            $dbName = ltrim($dbOpts["path"],'/');
+            $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+            // away from db setup and onto statements
             $newcar_stmt = $db->prepare("INSERT INTO service_vehicle
                                        (vin, color, make, model, year, owner)
                                        VALUES (:vin, :color, :make, :model, :year, :owner)");
