@@ -14,22 +14,28 @@
       
       if (sizeof($_POST) > 0)
       {
+         echo "err here 0?<br>";
          try
          {
             // only connect if the user submitted a form
+            echo "err here 1?<br>";
             require('db_connect.php');
+            echo "err here 2?<br>";
 
             // away from db setup and onto statements
             $newcar_stmt = $db->prepare("INSERT INTO service_vehicle
                                        (vin, color, make, model, year, owner)
                                        VALUES (:vin, :color, :make, :model, :year, :owner)");
+            echo "err here 3?<br>";
             $newscrip_stmt->bindParam(':vin', htmlspecialchars($_POST['newcar_vin']));
             $newscrip_stmt->bindParam(':color', htmlspecialchars($_POST['newcar_color']));
             $newscrip_stmt->bindParam(':make', htmlspecialchars($_POST['newcar_make']));
+            echo "err here 5?<br>";
             $newscrip_stmt->bindParam(':model', htmlspecialchars($_POST['newcar_model']));
             $newscrip_stmt->bindParam(':year', htmlspecialchars($_POST['newcar_year']));
             $newscrip_stmt->bindParam(':owner', htmlspecialchars($_POST['newcar_owner']));
             $newscrip_stmt->execute();
+            echo "err here 5?<br>";
             echo "New vehicle successfully added!";
          }
          catch (PDOException $ex)
