@@ -63,7 +63,10 @@
             $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture (book, chapter, verse, content)
                                            VALUES ($newcrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)
                                            RETURNING id");
-            $newscrip_id = $newscrip_stmt->fetch()['id'];
+            $newscrip_id_row = pg_fetch_array($newscrip_stmt);
+            $newscrip_id = $newscrip_id_row['id'];
+
+            echo "Have we gotten to this?<br>";
 
             foreach ($newscrip_topics as $topic)
             { 
