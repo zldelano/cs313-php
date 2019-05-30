@@ -61,7 +61,7 @@
             // echo "debug id: $newscrip_id<br>";
 
             $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture (book, chapter, verse, content)
-                                           VALUES ($newcrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)
+                                           VALUES ($newscrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)
                                            RETURNING id");
             $newscrip_id_row = pg_fetch_array($newscrip_stmt);
             $newscrip_id = $newscrip_id_row['id'];
