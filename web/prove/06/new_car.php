@@ -12,6 +12,8 @@
    <?php
       require 'nav.php';
       require 'db_connect.php';
+
+      echo var_dump($_POST);
    ?>
    <h1>New Car</h1>
    <form action="new_car.php" method="post">
