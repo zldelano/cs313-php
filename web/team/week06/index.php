@@ -36,8 +36,15 @@
          foreach ($db->query($the_query) as $row)
          {
             $id = $row['id'];
+            $topics_query = "SELECT jst.scripture_id AS scripture_id, jst.topic_id AS topic_id, t.name AS name
+                             FROM teach06_join_scripture_topic AS jst
+                             JOIN teach06_topic AS t ON jst.topic_id=t.id WHERE jst.scripture_id=$id";
             $scripture = $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
             echo "<a href=index.php?id=$id>" . $scripture . '</a>' .'<br>';
+            foreach ($db->query($topics_query) as $topics_row)
+            {
+               echo $topics_row['name'] . ", ";
+            }
             echo '<br/>';
          }
          
