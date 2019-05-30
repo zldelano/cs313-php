@@ -61,8 +61,13 @@
             // echo "debug id: $newscrip_id<br>";
 
             $newscrip_stmt = $db->prepare("INSERT INTO teach06_scripture (id, book, chapter, verse, content)
-                                           VALUES ($newscrip_id, $newscrip_book, $newscrip_chapter, $newscrip_verse, $newscrip_content)
+                                           VALUES (:newscrip_id, :newscrip_book, :newscrip_chapter, :newscrip_verse, :newscrip_content)
                                            RETURNING id");
+            $newscrip_stmt->bindParam(':newscrip_id', $newscrip_id);
+            $newscrip_stmt->bindParam(':newscrip_book', $newscrip_book);
+            $newscrip_stmt->bindParam(':newscrip_chapter', $newscrip_chapter);
+            $newscrip_stmt->bindParam(':newscrip_verse', $newscrip_verse);
+            $newscrip_stmt->bindParam(':newscrip_content', $newscrip_content);
             $newscrip_stmt->execute();
             // $newscrip_id_row = pg_fetch_array($newscrip_stmt);
             // $newscrip_id = $newscrip_id_row['id'];
@@ -75,7 +80,9 @@
             { 
                echo "topic: $topic<br>";
                $scrip_topic_stmt = $db->prepare("INSERT INTO teach06_join_scripture_topic
-                                                 VALUES ($newscrip_id, $topic)");
+                                                 VALUES (:newscrip_id, :topic)");
+               $scrip_topic_stmt->bindParam(':newscrip_id', $newscrip_id);
+               $scrip_topic_stmt->bindParam(':topic', $topic);
                $scrip_topic_stmt->execute();
             }
          }
