@@ -66,7 +66,7 @@
             $newscrip_id_row = pg_fetch_array($newscrip_stmt);
             $newscrip_id = $newscrip_id_row['id'];
 
-            echo "Have we gotten to this?<br>";
+            echo "Have we gotten to this? newscrip_id: $newscrip_id<br>";
 
             foreach ($newscrip_topics as $topic)
             { 
