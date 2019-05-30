@@ -73,7 +73,7 @@
             foreach ($newscrip_topics as $topic)
             { 
                echo "topic: $topic<br>";
-               $scrip_topic_stmt = $db->prepare("INSERT INTO teach06_join_scripture_topic (scripture_id, topic_id)
+               $scrip_topic_stmt = $db->prepare("INSERT INTO teach06_join_scripture_topic
                                                  VALUES ($newscrip_id, $topic)");
                $scrip_topic_stmt->execute();
             }
