@@ -42,7 +42,7 @@
                              ON s.id=jst.scripture_id
                              JOIN teach06_topic AS t
                              ON jst.topic_id=t.id
-                             WHERE jst.scripture_id=$id";
+                             WHERE jst.scripture_id='$id'";
             $scripture = $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'];
             echo "<a href=index.php?id=$id>" . $scripture . '</a>' .'<br>';
             foreach ($db->query($topics_query) as $topics_row)
