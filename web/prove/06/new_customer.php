@@ -15,20 +15,44 @@
    ?>
    <h1>New Customer</h1>
    <form action="new_car.php" method="post">
-      Email:            <input type="text" name="newcust_email"><br>
-      First name:       <input type="text" name="newcust_name_first"><br>
-      Second name:      <input type="text" name="newcust_name_second"><br>
-      Phone (primary):  <input type="text" name="newcust_phone_primary"><br>
-      Phone (secondary):<input type="text" name="newcust_phone_secondary"><br>
+      <table>
+         <tr>
+            <td>Email:</td>            <td><input type="text" name="newcust_email"></td>
+         </tr>
+         <tr>
+            <td>First name:</td>       <td><input type="text" name="newcust_name_first"></td>
+         </tr>
+         <tr>
+            <td>Second name:</td>      <td><input type="text" name="newcust_name_second"></td>
+         </tr>
+         <tr>
+            <td>Phone (primary):</td>  <td><input type="text" name="newcust_phone_primary"></td>
+         </tr>
+         <tr>
+            <td>Phone (secondary):</td><td><input type="text" name="newcust_phone_secondary"></td>
+         </tr>
+      </table>
       <input type="submit"><br>
    </form>
    <h1>New Address</h1>
    <form action="new_car.php" method="post">
-      Street:           <input type="text" name="newaddr_street"><br>
-      City:             <input type="text" name="newaddr_city"><br>
-      Zip:              <input type="text" name="newaddr_zip"><br>
-      State:            <input type="text" name="newaddr_state"><br>
-      Apartment Number: <input type="text" name="newaddr_apt_number"><br>
+      <table>
+      <tr>
+         <td>Street:</td>           <td><input type="text" name="newaddr_street"></td>
+      </tr>
+      <tr>
+         <td>City:</td>             <td><input type="text" name="newaddr_city"></td>
+      </tr>
+      <tr>
+         <td>Zip:</td>              <td><input type="text" name="newaddr_zip"></td>
+      </tr>
+      <tr>
+         <td>State:</td>            <td><input type="text" name="newaddr_state"></td>
+      </tr>
+      <tr>
+         <td>Apartment Number:</td> <td><input type="text" name="newaddr_apt_number"></td>
+      </tr>
+      </table>
       <input type="submit"><br>
    </form>
 </body>
