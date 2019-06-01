@@ -44,11 +44,11 @@
          // set up the statement
          $stmt = $db->prepare('INSERT INTO service_service
                                VALUES (:id, :vin, :email, :notes, :tech)');
-         // $stmt->bindParam(':id', htmlspecialchars($ns_id));
-         // $stmt->bindParam(':vin', htmlspecialchars($ns_vin));
-         // $stmt->bindParam(':email', htmlspecialchars($ns_email));
-         // $stmt->bindParam(':notes', htmlspecialchars($ns_notes));
-         // $stmt->bindParam(':tech', htmlspecialchars($ns_tech));
+         $stmt->bindParam(':id', htmlspecialchars($ns_id));
+         $stmt->bindParam(':vin', htmlspecialchars($ns_vin));
+         $stmt->bindParam(':email', htmlspecialchars($ns_email));
+         $stmt->bindParam(':notes', htmlspecialchars($ns_notes));
+         $stmt->bindParam(':tech', htmlspecialchars($ns_tech));
          // $stmt->execute();
       }
    ?>
