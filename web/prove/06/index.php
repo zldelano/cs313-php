@@ -35,11 +35,11 @@
       }
       else
       {
-         // $ns_id    = gen_uuid();
-         // $ns_vin   = $_POST['new_service_vin']; // ns stands for "new service"
-         // $ns_email = $_POST['new_service_email'];
-         // $ns_notes = $_POST['new_service_notes'];
-         // $ns_tech  = $_POST['new_service_tech'];
+         $ns_id    = gen_uuid();
+         $ns_vin   = $_POST['new_service_vin']; // ns stands for "new service"
+         $ns_email = $_POST['new_service_email'];
+         $ns_notes = $_POST['new_service_notes'];
+         $ns_tech  = $_POST['new_service_tech'];
 
          // // set up the statement
          // $stmt = $db->prepare('INSERT INTO service_service
