@@ -17,7 +17,7 @@
       $_SESSION['user'] = htmlspecialchars($_POST['user']);
 
       // set these up for saving user input upon error
-      $input_vin   = "";
+      $input_vin   = null;
       $input_email = "";
       $input_notes = "";
       $input_tech  = "";
