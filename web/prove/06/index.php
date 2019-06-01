@@ -72,7 +72,7 @@
       }
       echo '</div>';
       echo "</td></tr>";
-      echo '</table>';
+      echo '</table><input type="submit">';
       echo '</form>';
    ?>
 </body>
