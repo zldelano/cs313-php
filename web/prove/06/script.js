@@ -1,0 +1,1 @@
+$('div.checkbox-group.required :checkbox:checked').length > 0

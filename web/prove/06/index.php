@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css?family=Work+Sans:400">
+   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Document</title>
    <link rel="stylesheet" href="style.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   <script src="script.js"></script>
 </head>
 <body>
    <?php
@@ -44,7 +46,7 @@
       echo '<table>';
       echo '<tr><td>VIN:</td>            <td><input type="text" name="new_service_vin"></td></tr>';
       echo '<tr><td>Customer email:</td> <td><input type="text" name="new_service_email"></td></tr>';
-      echo '<tr><td>Notes:</td>          <td><textarea name="new_service_notes" id="notes">Notes</textarea></td></tr>';
+      echo '<tr><td>Notes:</td>          <td><textarea name="new_service_notes" id="notes"></textarea></td></tr>';
 
       // technician row
       echo '<tr><td>Technician:</td><td>';
@@ -62,11 +64,13 @@
       // jobs row
       echo '<tr><td>Jobs:</td><td>';
       // jobs row: fill in right cell with job options
+      echo '<div class="checkbox-group required">';
       foreach ($rows_service_job_info as $ji)
       {
          $job_name=$ji['job_name'];
          echo "<input type='checkbox' name='new_service_jobs[]' value='$job_name'>$job_name<br>";
       }
+      echo '</div>';
       echo "</td></tr>";
       echo '</table>';
       echo '</form>';

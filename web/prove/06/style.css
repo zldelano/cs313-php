@@ -88,7 +88,7 @@ nav ul {
 
 nav li {
     display: inline-block;
-    margin-left: 70px;
+    margin-left: 40px;
     padding-top: 23px;
     position: relative;
     /* `position: relative` makes it so that nav a::before
@@ -124,6 +124,7 @@ nav a::hover::before {
 }
 
 body table {
+    width: 80%;
     color: #ededed;
 }
 
