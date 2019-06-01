@@ -21,18 +21,18 @@
       $job_name_field='newservice_jobs[]';
       $tech_name_field='new_service_job_tech[]';
 
-      $service_job_info_rows = null;
-      $service_employee_rows = null;
+      $rows_service_job_info = null;
+      $rows_service_employee = null;
       try {
          // get the list of jobs the advisor can select from
          $stmt = $db->prepare('SELECT job_name, cost FROM service_job_info');
          $stmt->execute();
-         $service_job_info_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         $rows_service_job_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
          // get the list of technicians the advisor can select from
          $stmt = $db->prepare('SELECT name_first, name_second, username FROM service_employee WHERE role=\'technician\'');
          $stmt->execute();
-         $service_employee_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         $rows_service_employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
       catch (PDOException $ex)
       {
@@ -41,37 +41,35 @@
       }
 
       echo '<form action="index.php" method="post">';
-      echo 'VIN:            <input type="text" name="new_service_vin"><br>';
-      echo 'Customer email: <input type="text" name="new_service_email"><br>';
-      echo '<textarea name="new_service_notes" id="notes">Notes</textarea><br>';
-      echo "The list of jobs and technicians<br>";
+      echo '<table>';
+      echo '<tr><td>VIN:</td>            <td><input type="text" name="new_service_vin"></td></tr>';
+      echo '<tr><td>Customer email:</td> <td><input type="text" name="new_service_email"></td></tr>';
+      echo '<tr><td>Notes:</td>          <td><textarea name="new_service_notes" id="notes">Notes</textarea></td></tr>';
 
-      $ji_length=sizeof($service_job_info_rows);
-      for ($i = 1; $i <= $ji_length; $i++) {
-         // jobs
-         echo "Job:<br>";
-         echo "<select name=$job_name_field>";
-         echo "<option value=0>None</option>";
-         foreach ($service_job_info_rows as $ji)
-         {
-            $job_name=$ji['job_name'];
-            echo "<option value=$i>$job_name</option>";
-         }
-         echo "</select><br>";
-
-         // technicians
-         echo "Assigned Technician:<br>";
-         echo "<select name=$tech_name_field>";
-         echo "<option value=0>None</option>";
-         foreach ($service_employee_rows as $tech)
-         {
-            $tech_name_first=$tech['name_first'];
-            $tech_name_second=$tech['name_second'];
-            echo "<option value=$i>$tech_name_second, $tech_name_first</option>";
-         }
-         echo "</select><br><br>";
+      // technician row
+      echo '<tr><td>Technician:</td><td>';
+      // technician row: fill in right cell with technician options
+      echo "<select name=$tech_name_field>";
+      echo '<option value=0>None</option>';
+      foreach ($rows_service_employee as $tech)
+      {
+         $tech_name_first=$tech['name_first'];
+         $tech_name_second=$tech['name_second'];
+         echo "<option value=$i>$tech_name_second, $tech_name_first</option>";
       }
-      echo "</form>"
+      echo "</select></td></tr>";
+
+      // jobs row
+      echo '<tr><td>Jobs:</td><td>';
+      // jobs row: fill in right cell with job options
+      foreach ($rows_service_job_info as $ji)
+      {
+         $job_name=$ji['job_name'];
+         echo "<input type='checkbox' name='new_service_jobs[]' value='$job_name'>$job_name<br>";
+      }
+      echo "</td></tr>";
+      echo '</table>';
+      echo '</form>';
    ?>
 </body>
 </html>
