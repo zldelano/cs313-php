@@ -141,3 +141,7 @@ body table {
 .selection {
     width: 80%;
 }
+
+.error {
+    color: #ff4545;
+}

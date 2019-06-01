@@ -1,1 +1,1 @@
-$('div.checkbox-group.required :checkbox:checked').length > 0
+// $('div.checkbox-group.required :checkbox:checked').length > 0

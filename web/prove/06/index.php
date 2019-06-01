@@ -17,6 +17,42 @@
 
       // set session vars
       $_SESSION['user'] = htmlspecialchars($_POST['user']);
+
+      // set these up for saving user input upon error
+      $input_vin   = "";
+      $input_email = "";
+      $input_notes = "";
+      $input_tech  = "";
+      
+      // this is how we check if at least one of the checkboxes was selected
+      if (isset($_POST['new_service_vin']) && !isset(_POST['new_service_jobs']))
+      {
+         echo '<div class="error">No jobs selected for service.</div>';
+         
+            // save the user's input if they made a mistake
+            $input_vin = $_POST['new_service_vin'];
+            $input_email = $_POST['new_service_email'];
+            $input_notes = $_POST['new_service_notes'];
+            $input_tech = $_POST['new_service_tech'];
+         }
+      else
+      {
+         $ns_id = gen_uuid();
+         $ns_vin = $_POST['new_service_vin']; // ns stands for "new service"
+         $ns_email = $_POST['new_service_email'];
+         $ns_notes = $_POST['new_service_notes'];
+         $ns_tech = $_POST['new_service_tech'];
+
+         // set up the statement
+         $stmt = $db->prepare('INSERT INTO service_service
+                               VALUES (:id, :vin, :email, :notes, :tech)');
+         $stmt->bindParam(':id', $ns_id);
+         $stmt->bindParam(':vin', $ns_vin);
+         $stmt->bindParam(':email', $ns_email);
+         $stmt->bindParam(':notes', $ns_notes);
+         $stmt->bindParam(':tech', $ns_tech);
+         $stmt->execute();
+      }
    ?>
    <h1>New Service</h1>
    <?php
@@ -44,33 +80,37 @@
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
-      echo '<tr><td>VIN:</td>            <td><input type="text" name="new_service_vin"></td></tr>';
-      echo '<tr><td>Customer email:</td> <td><input type="text" name="new_service_email"></td></tr>';
-      echo '<tr><td>Notes:</td>          <td><textarea name="new_service_notes" id="notes"></textarea></td></tr>';
+      echo '<tr><td>VIN:</td>            <td><input type="text" name="new_service_vin" required></td></tr>';
+      echo '<tr><td>Customer email:</td> <td><input type="text" name="new_service_email" required></td></tr>';
+      echo '<tr><td>Notes:</td>          <td><textarea name="new_service_notes" id="notes" required></textarea></td></tr>';
 
       // technician row
       echo '<tr><td>Technician:</td><td>';
       // technician row: fill in right cell with technician options
-      echo "<select name=$tech_name_field>";
-      echo '<option value=0>None</option>';
+      echo "<select name=$tech_name_field required>";
+      echo '<option value="">None</option>';
       foreach ($rows_service_employee as $tech)
       {
          $tech_name_first=$tech['name_first'];
          $tech_name_second=$tech['name_second'];
-         echo "<option value=$i>$tech_name_second, $tech_name_first</option>";
+         $tech_username=$tech['username'];
+         $tech_is_selected="";
+         if ($input_tech==$tech_username)
+            $tech_is_selected="selected=\"selected\"";
+         echo "<option value=$tech_username $tech_is_selected>$tech_name_second, $tech_name_first</option>";
       }
       echo "</select></td></tr>";
 
       // jobs row
       echo '<tr><td>Jobs:</td><td>';
       // jobs row: fill in right cell with job options
-      echo '<div class="checkbox-group required">';
+      // echo '<div class="checkbox-group required">';
       foreach ($rows_service_job_info as $ji)
       {
          $job_name=$ji['job_name'];
          echo "<input type='checkbox' name='new_service_jobs[]' value='$job_name'>$job_name<br>";
       }
-      echo '</div>';
+      // echo '</div>';
       echo "</td></tr>";
       echo '</table><input type="submit">';
       echo '</form>';
