@@ -41,16 +41,18 @@
             $ns_vin   = $_POST['new_service_vin']; // ns stands for "new service"
             $ns_email = $_POST['new_service_email'];
             $ns_notes = $_POST['new_service_notes'];
-            $ns_tech  = $_POST['new_service_tech'];
+            $ns_advisor = $_POST['user'];
+            $nj_tech  = $_POST['new_service_tech'];
 
             // set up the statement
-            $stmt = $db->prepare("INSERT INTO service_service
-                                 VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :tech)");
+            $stmt = $db->prepare("INSERT INTO service_service (service_id, vin, customer_email, notes, advisor)
+                                 VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :advisor)");
             $stmt->bindParam(':id', htmlspecialchars($ns_id));
             $stmt->bindParam(':vin', filter_var($ns_vin, FILTER_SANITIZE_NUMBER_INT));
             $stmt->bindParam(':email', htmlspecialchars($ns_email));
             $stmt->bindParam(':notes', htmlspecialchars($ns_notes));
-            $stmt->bindParam(':tech', htmlspecialchars($ns_tech));
+            $stmt->bindParam(':advisor', htmlspecialchars($ns_nadvisor));
+            // $stmt->bindParam(':advisor', htmlspecialchars($nj_tech));
             $stmt->execute();
          }
          catch (PDOException $ex)
