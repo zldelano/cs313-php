@@ -19,12 +19,6 @@
       require 'nav.php';
       require 'db_connect.php';
 
-      // if (is_null($post_user))
-      //    echo "post_user is null right now<br>";
-      
-      // if (isset($post_user))
-      //    echo "post_user is set right now<br>";
-
       // set these up for saving user input upon error
       $dummy_vin = "00000000000000000";
       $input_vin   = $dummy_vin;
@@ -109,6 +103,11 @@
          $stmt = $db->prepare('SELECT name_first, name_second, username FROM service_employee WHERE role=\'technician\'');
          $stmt->execute();
          $rows_service_employee = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+         // generate a list of VINs for the user to use as reference in an input box
+         $stmt = $db->prepare('SELECT vin FROM service_vehicle');
+         $stmt->execute();
+         $rows_service_vehicle = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
       catch (PDOException $ex)
       {
@@ -116,12 +115,21 @@
          die();
       }
 
+      $datalist_name_vehicles = "vehicles";
+      echo "<datalist id=$datalist_name_vehicles>";
+      foreach ($rows_service_vehicle as $row_vehicle)
+      {
+         $vin = $row_vehicle['vin'];
+         echo "<option value=$vin>";
+      }
+      echo "</datalist>";
+
       if ($input_vin==$dummy_vin)
          $input_vin=null;
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
-      echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\"  required value=$input_vin></td></tr>";
+      echo "<tr><td>VIN:</td>            <td><input type=\"number\" list=$datalist_name_vehicles name=\"new_service_vin\"  required value=$input_vin></td></tr>";
       echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" required value=$input_email></td></tr>";
       echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" required>$input_notes</textarea></td></tr>";
       // https://www.w3schools.com/tags/tag_datalist.asp for the future for customer emails
