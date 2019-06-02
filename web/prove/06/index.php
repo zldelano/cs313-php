@@ -37,21 +37,21 @@
       else
       {
          try {
-            $ns_id    = gen_uuid();
-            $ns_vin   = $_POST['new_service_vin']; // ns stands for "new service"
-            $ns_email = $_POST['new_service_email'];
-            $ns_notes = $_POST['new_service_notes'];
-            $ns_advisor = $_POST['user'];
-            $nj_tech  = $_POST['new_service_tech'];
+            $ns_id      = gen_uuid();
+            $ns_vin     = (int)filter_var($_POST['new_service_vin'], FILTER_SANITIZE_NUMBER_INT); // ns stands for "new service"
+            $ns_email   = htmlspecialchars($_POST['new_service_email']);
+            $ns_notes   = htmlspecialchars($_POST['new_service_notes']);
+            $ns_advisor = htmlspecialchars($_POST['user']);
+            $nj_tech    = htmlspecialchars($_POST['new_service_tech']);
 
             // set up the statement
             $stmt = $db->prepare("INSERT INTO service_service (service_id, vin, customer_email, notes, advisor)
                                  VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :advisor)");
-            $stmt->bindParam(':id', htmlspecialchars($ns_id));
-            $stmt->bindParam(':vin', filter_var($ns_vin, FILTER_SANITIZE_NUMBER_INT));
-            $stmt->bindParam(':email', htmlspecialchars($ns_email));
-            $stmt->bindParam(':notes', htmlspecialchars($ns_notes));
-            $stmt->bindParam(':advisor', htmlspecialchars($ns_nadvisor));
+            $stmt->bindParam(':id', $ns_id);
+            $stmt->bindParam(':vin', $ns_vin);
+            $stmt->bindParam(':email', $ns_email);
+            $stmt->bindParam(':notes', $ns_notes);
+            $stmt->bindParam(':advisor', $ns_nadvisor);
             // $stmt->bindParam(':advisor', htmlspecialchars($nj_tech));
             $stmt->execute();
          }

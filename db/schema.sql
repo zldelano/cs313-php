@@ -87,8 +87,8 @@ CREATE TABLE service_service (
    -- key setup
    PRIMARY KEY (service_id),
    FOREIGN KEY (customer_email)  REFERENCES service_customer (customer_email),
-   FOREIGN KEY (vin)          REFERENCES service_vehicle (vin),
-   FOREIGN KEY (advisor)      REFERENCES service_employee (username)
+   FOREIGN KEY (vin)             REFERENCES service_vehicle (vin),
+   FOREIGN KEY (advisor)         REFERENCES service_employee (username)
 );
 
 CREATE TABLE service_job (
