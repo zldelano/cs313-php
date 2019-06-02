@@ -53,9 +53,9 @@
             $ns_notes   = htmlspecialchars($_POST['new_service_notes']);
             $ns_advisor = $_SESSION['user'];
 
-            // set up the statement
+            // set up the statement for inserting a service
             $stmt = $db->prepare("INSERT INTO service_service (service_id, vin, customer_email, notes, advisor)
-                                 VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :advisor)");
+                                  VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :advisor)");
             $stmt->bindParam(':id', $ns_id);
             $stmt->bindParam(':vin', $ns_vin);
             $stmt->bindParam(':email', $ns_email);
@@ -64,7 +64,22 @@
             $stmt->execute();
 
             // set up vars for jobs
-            $nj_tech    = htmlspecialchars($_POST['new_service_tech']);
+            $nj_tech = htmlspecialchars($_POST['new_service_tech']);
+            $ns_jobs = $_POST['new_service_jobs'];
+
+            // insert the jobs
+            foreach ($ns_jobs as $ns_job)
+            {
+               $nj_id = gen_uuid();
+               $nj_time = time();
+               $stmt = db->prepare("INSERT INTO service_job (job_id, service_id, technician, job_name, time_start)
+                                    VALUES (:nj_id, :ns_id, :nj_tech, :ns_job, :nj_time)");
+               $stmt->bindParam(':nj_id', $nj_id);
+               $stmt->bindParam(':ns_id', $ns_id);
+               $stmt->bindParam(':nj_tech', $nj_tech);
+               $stmt->bindParam(':ns_job', $ns_job);
+               $stmt->bindParam(':nj_time', $nj_time);
+            }
          }
          catch (PDOException $ex)
          {
@@ -105,6 +120,7 @@
       echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\"  required value=$input_vin></td></tr>";
       echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" required value=$input_email></td></tr>";
       echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" required>$input_notes</textarea></td></tr>";
+      // https://www.w3schools.com/tags/tag_datalist.asp for the future for customer emails
 
       // technician row
       echo '<tr><td>Technician:</td><td>';
