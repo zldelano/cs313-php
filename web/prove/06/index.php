@@ -91,8 +91,8 @@
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
-      echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\" value=$input_vin " . "required></td></tr>";
-      echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" value=$input_email " . "required></td></tr>";
+      echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\" value=$input_vin required></td></tr>";
+      echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" required value=$input_email></td></tr>";
       echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" " . "required>$input_notes</textarea></td></tr>";
 
       // technician row
@@ -108,7 +108,7 @@
          $tech_is_selected="";
          if ($input_tech==$tech_username)
             $tech_is_selected="selected";
-         echo "<option name=$tech_username value=$tech_username " . "$tech_is_selected>$tech_name_second, $tech_name_first</option>";
+         echo "<option name=$tech_username value=$tech_username $tech_is_selected>$tech_name_second, $tech_name_first</option>";
          echo "$tech_username<br>";
       }
       echo "Input tech: $input_tech<br>";
