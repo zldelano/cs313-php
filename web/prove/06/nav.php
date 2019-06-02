@@ -14,3 +14,13 @@
         </nav>
     </div>
 </header>
+<?php
+    $curr_file = basename($_SERVER['PHP_SELF']);
+    echo $curr_file;
+
+    // if (!isset($_SESSION['user']) && $curr_file != "login.php")
+    // {
+    //     echo "not logged in... redirecting";
+    //     header('Location: login.php');
+    // }
+?>
