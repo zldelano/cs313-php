@@ -17,7 +17,7 @@
       $_SESSION['user'] = htmlspecialchars($_POST['user']);
 
       // set these up for saving user input upon error
-      $dummy_vin = null;
+      $dummy_vin = "00000000000000000";
       $input_vin   = $dummy_vin;
       $input_email = "";
       $input_notes = "";
@@ -84,8 +84,8 @@
          die();
       }
 
-      // if ($input_vin==$dummy_vin)
-      //    $input_vin="";
+      if ($input_vin==$dummy_vin)
+         $input_vin=null;
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
