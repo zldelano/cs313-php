@@ -34,7 +34,7 @@
             $input_notes = $_POST['new_service_notes'];
             $input_tech = $_POST['new_service_tech'];
       }
-      else
+      else if (isset(_POST['new_service_jobs']))
       {
          try {
             $ns_id      = gen_uuid();
