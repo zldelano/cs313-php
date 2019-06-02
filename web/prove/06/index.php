@@ -39,13 +39,16 @@
       else if (isset($_POST['new_service_jobs']))
       {
          try {
+            // set up vars for service
             $ns_id      = gen_uuid();
             $ns_vin     = (int)filter_var($_POST['new_service_vin'], FILTER_SANITIZE_NUMBER_INT); // ns stands for "new service"
             $ns_email   = htmlspecialchars($_POST['new_service_email']);
             $ns_notes   = htmlspecialchars($_POST['new_service_notes']);
             $ns_advisor = $_SESSION['user'];
-            $nj_tech    = htmlspecialchars($_POST['new_service_tech']);
 
+            echo "NS advisor: $ns_advisor<br>";
+            echo "Session var: " . $_SESSION['user'];
+            
             // set up the statement
             $stmt = $db->prepare("INSERT INTO service_service (service_id, vin, customer_email, notes, advisor)
                                  VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :advisor)");
@@ -54,8 +57,10 @@
             $stmt->bindParam(':email', $ns_email);
             $stmt->bindParam(':notes', $ns_notes);
             $stmt->bindParam(':advisor', $ns_nadvisor);
-            // $stmt->bindParam(':advisor', htmlspecialchars($nj_tech));
             $stmt->execute();
+
+            // set up vars for jobs
+            $nj_tech    = htmlspecialchars($_POST['new_service_tech']);
          }
          catch (PDOException $ex)
          {
