@@ -20,6 +20,17 @@
          $stmt = $db->prepare('SELECT * FROM unfinished_services');
          $stmt->execute();
          $unfinished_service_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+         // insert the jobs
+         if (isset($_POST['finish_job']))
+         {
+            $finished_job_id = $_POST['finish_job'];
+            $stmt = $db->prepare("UPDATE service_job
+                                  SET time_end=CURRENT_TIMESTAMP
+                                  WHERE (job_id=:id)");
+            $stmt->bindParam(':id', $finished_job_id);
+            $stmt->execute();
+         }
       }
       catch (PDOException $ex)
       {
@@ -48,7 +59,7 @@
          echo "<td>$us_customer_email</td>";
          echo "<td>$us_job_name</td>";
          echo "<td>$us_technician</td>";
-         echo "<td><form action=\"unfinished_services.php\" method=\"post\"><input type=\"submit\" name=$job_id value=\"finish job\"></form></td>";
+         echo "<td><form action=\"unfinished_services.php\" method=\"post\"><button type=\"submit\" name=\"finish_job\" value=$job_id>finish job</button></form></td>";
          echo "</tr>";
       }
       echo '</table>';
