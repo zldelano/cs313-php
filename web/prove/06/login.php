@@ -15,10 +15,10 @@
 
       echo "value of user session variable upon redirect: " . $_SESSION['user'] . "<br>";
 
-      if (isnull($_SESSION['user']))
-         echo "user is null<br>";
-      else
-         echo "user is NOT null<br>";
+      // if (isnull($_SESSION['user']))
+      //    echo "user is null<br>";
+      // else
+      //    echo "user is NOT null<br>";
 
       if (isset($_SESSION['user']))
          echo "user is set<br>";
