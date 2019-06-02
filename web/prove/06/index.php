@@ -1,5 +1,7 @@
 <?php
-   $_SESSION['user'] = htmlspecialchars($_POST['user']);
+   $post_user = $_POST['user'];
+   if (isset($post_user))
+      $_SESSION['user'] = htmlspecialchars($post_user);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +17,6 @@
    <?php
       require 'nav.php';
       require 'db_connect.php';
-
-      echo "did we getanything for the user? " . $_POST['user'];
 
       // set these up for saving user input upon error
       $dummy_vin = "00000000000000000";
@@ -46,9 +46,6 @@
             $ns_notes   = htmlspecialchars($_POST['new_service_notes']);
             $ns_advisor = $_SESSION['user'];
 
-            echo "NS advisor: $ns_advisor<br>";
-            echo "Session var: " . $_SESSION['user'];
-            
             // set up the statement
             $stmt = $db->prepare("INSERT INTO service_service (service_id, vin, customer_email, notes, advisor)
                                  VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :advisor)");
