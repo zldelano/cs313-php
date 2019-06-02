@@ -51,7 +51,8 @@
             $ns_vin     = (int)filter_var($_POST['new_service_vin'], FILTER_SANITIZE_NUMBER_INT); // ns stands for "new service"
             $ns_email   = htmlspecialchars($_POST['new_service_email']);
             $ns_notes   = htmlspecialchars($_POST['new_service_notes']);
-            $ns_advisor = $_SESSION['user'];
+            $ns_advisor = "ogonzales";
+            // $ns_advisor = $_SESSION['user'];
 
             // set up the statement
             $stmt = $db->prepare("INSERT INTO service_service (service_id, vin, customer_email, notes, advisor)
