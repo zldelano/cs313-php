@@ -26,7 +26,7 @@
       // this is how we check if at least one of the checkboxes was selected
       if (isset($_POST['new_service_vin']) && !isset(_POST['new_service_jobs']))
       {
-         echo '<div class="error"><p>No jobs selected for service.</p></div>';
+         echo '<div class="error">No jobs selected for service.</div>';
          
             // save the user's input if they made a mistake
             $input_vin = $_POST['new_service_vin'];
@@ -108,8 +108,10 @@
          $tech_is_selected="";
          if ($input_tech==$tech_username)
             $tech_is_selected="selected";
-         echo "<option value=$tech_username " . "$tech_is_selected>$tech_name_second, $tech_name_first</option>";
+         echo "<option name=$tech_username value=$tech_username " . "$tech_is_selected>$tech_name_second, $tech_name_first</option>";
+         echo "$tech_username<br>";
       }
+      echo "Input tech: $input_tech<br>";
       echo "</select></td></tr>";
 
       // jobs row
