@@ -18,6 +18,12 @@
       require 'nav.php';
       require 'db_connect.php';
 
+      if (is_null($post_user))
+         echo "post_user is null right now<br>";
+      
+      if (isset($post_user))
+         echo "post_user is set right now<br>";
+
       // set these up for saving user input upon error
       $dummy_vin = "00000000000000000";
       $input_vin   = $dummy_vin;
