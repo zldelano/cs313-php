@@ -2,10 +2,7 @@
    if (isset($_POST['user']))
    {
       $_SESSION['user'] = htmlspecialchars($_POST['user']);
-      if ($_POST['user'] == "")
-         header('Location: nav_login.php');
    }
-   
 ?>
 <!DOCTYPE html>
 <html lang="en">
