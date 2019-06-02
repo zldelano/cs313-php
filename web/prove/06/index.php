@@ -65,7 +65,7 @@
    <h1>New Service</h1>
    <?php
       $job_name_field='newservice_jobs[]';
-      $tech_name_field='new_service_job_tech[]';
+      $tech_name_field='new_service_tech';
 
       $rows_service_job_info = null;
       $rows_service_employee = null;
