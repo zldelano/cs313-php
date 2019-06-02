@@ -24,7 +24,7 @@
             $newcust_phone_primary   = htmlspecialchars($_POST['newcust_phone_primary']);
             $newcust_phone_secondary = htmlspecialchars($_POST['newcust_phone_secondary']);
             $newcust_address_id      = htmlspecialchars($_POST['newcust_address_id']);
-
+            
             $stmt = $db->prepare("INSERT INTO service_customer (customer_email, name_first, name_second, phone_primary, phone_secondary, address_id)
                                   VALUES (:email, :name_first, :name_second, :phone_primary, :phone_secondary, :address_id)");
             $stmt->bindParam(':email', $newcust_email);
@@ -37,7 +37,25 @@
          }
          if (isset($_POST['newaddr_street']))
          {
-            //
+            $newaddr_street = htmlspecialchars($_POST['newaddr_street']);
+            $newaddr_city = htmlspecialchars($_POST['newaddr_city']);
+            $newaddr_zip = htmlspecialchars($_POST['newaddr_zip']);
+            $newaddr_state = htmlspecialchars($_POST['newaddr_state']);
+            $newaddr_apt_number = htmlspecialchars($_POST['newaddr_apt_number']);
+
+            $stmt = $db->prepare("INSERT INTO service_address (city, street, zip, state)
+                                  VALUES (:city, :street, :zip, :state)");
+            if (isset($_POST['newaddr_apt_number']))
+            {
+               $stmt = $db->prepare("INSERT INTO service_address (city, street, zip, state, apt_number)
+                                     VALUES (:city, :street, :zip, :state, :apt_number)");
+               $stmt->bindParam(':apt_number', $newaddr_apt_number);
+            }
+            $stmt->bindParam(':city', $newaddr_city);
+            $stmt->bindParam(':street', $newaddr_street);
+            $stmt->bindParam(':zip', $newaddr_zip);
+            $stmt->bindParam(':state', $newaddr_state);
+            $stmt->execute();
          }
 
          // generate a list of customers for the user to use as reference in an input box
@@ -79,10 +97,10 @@
             <td>Second name:</td>      <td><input type="text" name="newcust_name_second" required></td>
          </tr>
          <tr>
-            <td>Phone (primary):</td>  <td><input type="text" name="newcust_phone_primary" required></td>
+            <td>Phone (primary):</td>  <td><input type="number" name="newcust_phone_primary" required></td>
          </tr>
          <tr>
-            <td>Phone (secondary):</td><td><input type="text" name="newcust_phone_secondary" required></td>
+            <td>Phone (secondary):</td><td><input type="number" name="newcust_phone_secondary" required></td>
          </tr>
          <tr>
             <td>Address:</td>          <td><input type="text" name="newcust_address_id" list="addresses" required></td>
@@ -100,13 +118,13 @@
          <td>City:</td>             <td><input type="text" name="newaddr_city" required></td>
       </tr>
       <tr>
-         <td>Zip:</td>              <td><input type="text" name="newaddr_zip" required></td>
+         <td>Zip:</td>              <td><input type="number" name="newaddr_zip" required></td>
       </tr>
       <tr>
          <td>State:</td>            <td><input type="text" name="newaddr_state" required></td>
       </tr>
       <tr>
-         <td>Apartment Number:</td> <td><input type="text" name="newaddr_apt_number"></td>
+         <td>Apartment Number:</td> <td><input type="number" name="newaddr_apt_number"></td>
       </tr>
       </table>
       <input type="submit"><br>
