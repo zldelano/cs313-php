@@ -1,3 +1,6 @@
+<?php 
+   $_SESSION['user'] = htmlspecialchars($_POST['user']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,6 @@
       require 'db_connect.php';
 
       // set session vars
-      $_SESSION['user'] = htmlspecialchars($_POST['user']);
 
       // set these up for saving user input upon error
       $dummy_vin = "00000000000000000";
