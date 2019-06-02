@@ -13,7 +13,17 @@
       require 'nav_login.php';
       require 'db_connect.php';
 
-      echo "value of user session variable upon redirect: " . $_POST['user'];
+      echo "value of user session variable upon redirect: " . $_SESSION['user'] . "<br>";
+
+      if (isnull($_SESSION['user']))
+         echo "user is null<br>";
+      else
+         echo "user is NOT null<br>";
+
+      if (isset($_SESSION['user']))
+         echo "user is set<br>";
+      else
+         echo "user is NOT set<br>";
 
       // logout if logged in
       if (isset($_SESSION['user']))
