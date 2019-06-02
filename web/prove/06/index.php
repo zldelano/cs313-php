@@ -91,9 +91,9 @@
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
-      echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\" value=$input_vin required></td></tr>";
+      echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\"  required value=$input_vin></td></tr>";
       echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" required value=$input_email></td></tr>";
-      echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" " . "required>$input_notes</textarea></td></tr>";
+      echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" required>$input_notes</textarea></td></tr>";
 
       // technician row
       echo '<tr><td>Technician:</td><td>';
