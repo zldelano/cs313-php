@@ -91,9 +91,9 @@
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
-      echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\" value=$input_vin required></td></tr>";
-      echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" value=$input_email required></td></tr>";
-      echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" required></textarea>$input_notes</td></tr>";
+      echo "<tr><td>VIN:</td>            <td><input type=\"number\" name=\"new_service_vin\" value=$input_vin " . "required></td></tr>";
+      echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" value=$input_email " . "required></td></tr>";
+      echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" " . "required>$input_notes</textarea></td></tr>";
 
       // technician row
       echo '<tr><td>Technician:</td><td>';
@@ -108,7 +108,7 @@
          $tech_is_selected="";
          if ($input_tech==$tech_username)
             $tech_is_selected="selected";
-         echo "<option value=$tech_username $tech_is_selected>$tech_name_second, $tech_name_first</option>";
+         echo "<option value=$tech_username " . "$tech_is_selected>$tech_name_second, $tech_name_first</option>";
       }
       echo "</select></td></tr>";
 
