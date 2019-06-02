@@ -72,7 +72,7 @@
             {
                $nj_id = gen_uuid();
                $nj_time = time();
-               $stmt = db->prepare("INSERT INTO service_job (job_id, service_id, technician, job_name, time_start)
+               $new_stmt = db->prepare("INSERT INTO service_job (job_id, service_id, technician, job_name, time_start)
                                     VALUES (:nj_id, :ns_id, :nj_tech, :ns_job, :nj_time)");
                // $stmt->bindParam(':nj_id', $nj_id);
                // $stmt->bindParam(':ns_id', $ns_id);
