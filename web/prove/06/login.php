@@ -13,6 +13,8 @@
       require 'nav_login.php';
       require 'db_connect.php';
 
+      echo "value of user session variable upon redirect: " . $_POST['user'];
+
       // logout if logged in
       if (isset($_SESSION['user']))
       {
