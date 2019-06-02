@@ -59,7 +59,7 @@
          echo "<td>$us_customer_email</td>";
          echo "<td>$us_job_name</td>";
          echo "<td>$us_technician</td>";
-         echo "<td><form action=\"unfinished_services.php\" method=\"post\"><button type=\"submit\" name=\"finish_job\" value=$job_id>finish job</button></form></td>";
+         echo "<td><form action=\"unfinished_services.php\" method=\"post\"><button type=\"submit\" name=\"finish_job\" value=$us_job_id>finish job</button></form></td>";
          echo "</tr>";
       }
       echo '</table>';
