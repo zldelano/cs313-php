@@ -15,11 +15,6 @@
 
       echo "value of user session variable upon redirect: " . $_SESSION['user'] . "<br>";
 
-      if (isset($_SESSION['user']))
-         echo "user is set<br>";
-      else
-         echo "user is NOT set<br>";
-
       // logout if logged in
       if (isset($_SESSION['user']))
       {
