@@ -108,6 +108,11 @@
          $stmt = $db->prepare('SELECT vin FROM service_vehicle');
          $stmt->execute();
          $rows_service_vehicle = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+         // generate a list of customers for the user to use as reference in an input box
+         $stmt = $db->prepare('SELECT customer_email FROM service_customer');
+         $stmt->execute();
+         $rows_service_customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
       catch (PDOException $ex)
       {
@@ -115,6 +120,7 @@
          die();
       }
 
+      // make a datalist of vehicles
       $datalist_name_vehicles = "vehicles";
       echo "<datalist id=$datalist_name_vehicles>";
       foreach ($rows_service_vehicle as $row_vehicle)
@@ -124,13 +130,23 @@
       }
       echo "</datalist>";
 
+      // make a datalist of customers
+      $datalist_name_customers = "vehicles";
+      echo "<datalist id=$datalist_name_customers>";
+      foreach ($rows_service_customer as $row_customer)
+      {
+         $email = $row_customer['customer_email'];
+         echo "<option value=$email>";
+      }
+      echo "</datalist>";
+
       if ($input_vin==$dummy_vin)
          $input_vin=null;
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
       echo "<tr><td>VIN:</td>            <td><input type=\"number\" list=$datalist_name_vehicles name=\"new_service_vin\"  required value=$input_vin></td></tr>";
-      echo "<tr><td>Customer email:</td> <td><input type=\"email\" name=\"new_service_email\" required value=$input_email></td></tr>";
+      echo "<tr><td>Customer email:</td> <td><input type=\"email\" list=$datalist_name_customers name=\"new_service_email\" required value=$input_email></td></tr>";
       echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" required>$input_notes</textarea></td></tr>";
       // https://www.w3schools.com/tags/tag_datalist.asp for the future for customer emails
 
