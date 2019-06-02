@@ -17,7 +17,7 @@
    <?php
       try {
          // get the list of jobs the advisor can select from
-         $stmt = $db->prepare('SELECT * FROM unfinished_services WHERE time_end=NULL');
+         $stmt = $db->prepare('SELECT * FROM unfinished_services WHERE time_end IS NULL');
          $stmt->execute();
          $unfinished_service_rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
