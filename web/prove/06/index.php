@@ -24,7 +24,7 @@
       $input_tech  = "";
       
       // this is how we check if at least one of the checkboxes was selected
-      if (isset($_POST['new_service_vin']) && !isset(_POST['new_service_jobs']))
+      if (isset($_POST['new_service_vin']) && !isset($_POST['new_service_jobs']))
       {
          echo '<div class="error">No jobs selected for service.</div>';
          
@@ -34,7 +34,7 @@
             $input_notes = $_POST['new_service_notes'];
             $input_tech = $_POST['new_service_tech'];
       }
-      else if (isset(_POST['new_service_jobs']))
+      else if (isset($_POST['new_service_jobs']))
       {
          try {
             $ns_id      = gen_uuid();
@@ -120,7 +120,7 @@
       foreach ($rows_service_job_info as $ji)
       {
          $job_name=$ji['job_name'];
-         echo "<input type='checkbox' name='new_service_jobs[]' value='$job_name'>$job_name<br>";
+         echo "<input type='checkbox' name='$job_name_field' value='$job_name'>$job_name<br>";
       }
       // echo '</div>';
       echo "</td></tr>";
