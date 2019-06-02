@@ -87,6 +87,11 @@
             echo 'Error!: ' . $ex->getMessage();
             die();
          }
+         catch (Exception $e)
+         {
+            echo 'Error!: $e';
+            die();
+         }
       }
    ?>
    <h1>New Service</h1>
