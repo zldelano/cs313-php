@@ -43,7 +43,7 @@
             $ns_vin     = (int)filter_var($_POST['new_service_vin'], FILTER_SANITIZE_NUMBER_INT); // ns stands for "new service"
             $ns_email   = htmlspecialchars($_POST['new_service_email']);
             $ns_notes   = htmlspecialchars($_POST['new_service_notes']);
-            $ns_advisor = htmlspecialchars($_POST['user']);
+            $ns_advisor = $_SESSION['user'];
             $nj_tech    = htmlspecialchars($_POST['new_service_tech']);
 
             // set up the statement
@@ -118,13 +118,11 @@
       // jobs row
       echo '<tr><td>Jobs:</td><td>';
       // jobs row: fill in right cell with job options
-      // echo '<div class="checkbox-group required">';
       foreach ($rows_service_job_info as $ji)
       {
          $job_name=$ji['job_name'];
          echo "<input type='checkbox' name='$job_name_field' value='$job_name'>$job_name<br>";
       }
-      // echo '</div>';
       echo "</td></tr>";
       echo '</table><input type="submit">';
       echo '</form>';
