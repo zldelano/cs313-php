@@ -47,7 +47,7 @@
             $stmt = $db->prepare("INSERT INTO service_service
                                  VALUES (:id, to_number(:vin, '99999999999999999'), :email, :notes, :tech)");
             $stmt->bindParam(':id', htmlspecialchars($ns_id));
-            $stmt->bindParam(':vin', htmlspecialchars($ns_vin));
+            $stmt->bindParam(':vin', filter_var($ns_vin, FILTER_SANITIZE_NUMBER_INT));
             $stmt->bindParam(':email', htmlspecialchars($ns_email));
             $stmt->bindParam(':notes', htmlspecialchars($ns_notes));
             $stmt->bindParam(':tech', htmlspecialchars($ns_tech));
