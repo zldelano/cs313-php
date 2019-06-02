@@ -111,9 +111,8 @@
          echo "<option name=$tech_username value=$tech_username $tech_is_selected>$tech_name_second, $tech_name_first</option>";
          echo "$tech_username<br>";
       }
-      echo "Input tech: $input_tech<br>";
       echo "</select></td></tr>";
-
+      
       // jobs row
       echo '<tr><td>Jobs:</td><td>';
       // jobs row: fill in right cell with job options
@@ -127,6 +126,13 @@
       echo "</td></tr>";
       echo '</table><input type="submit">';
       echo '</form>';
+
+      foreach ($rows_service_employee as $tech)
+      {
+         $tech_username=$tech['username'];
+         echo "$tech_username<br>";
+      }
+      echo "Input tech: $input_tech<br>";
    ?>
 </body>
 </html>
