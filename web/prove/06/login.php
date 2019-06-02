@@ -21,6 +21,7 @@
       }
 
       // upon login...
+      session_set_cookie_params(7200); // 2 hours, not 2 seconds
       session_start();
    ?>
    <h1>Adam's Service Drive</h1>
