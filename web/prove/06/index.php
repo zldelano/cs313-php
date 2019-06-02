@@ -51,8 +51,7 @@
             $ns_vin     = (int)filter_var($_POST['new_service_vin'], FILTER_SANITIZE_NUMBER_INT); // ns stands for "new service"
             $ns_email   = htmlspecialchars($_POST['new_service_email']);
             $ns_notes   = htmlspecialchars($_POST['new_service_notes']);
-            $ns_advisor = "ogonzales";
-            // $ns_advisor = $_SESSION['user'];
+            $ns_advisor = $_SESSION['user'];
 
             // set up the statement
             $stmt = $db->prepare("INSERT INTO service_service (service_id, vin, customer_email, notes, advisor)
@@ -61,7 +60,7 @@
             $stmt->bindParam(':vin', $ns_vin);
             $stmt->bindParam(':email', $ns_email);
             $stmt->bindParam(':notes', $ns_notes);
-            $stmt->bindParam(':advisor', $ns_nadvisor);
+            $stmt->bindParam(':advisor', $ns_advisor);
             $stmt->execute();
 
             // set up vars for jobs
