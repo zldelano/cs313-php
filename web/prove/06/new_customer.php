@@ -21,8 +21,8 @@
             $newcust_email           = htmlspecialchars($_POST['newcust_email']);
             $newcust_name_first      = htmlspecialchars($_POST['newcust_name_first']);
             $newcust_name_second     = htmlspecialchars($_POST['newcust_name_second']);
-            $newcust_phone_primary   = htmlspecialchars($_POST['newcust_phone_primary']);
-            $newcust_phone_secondary = htmlspecialchars($_POST['newcust_phone_secondary']);
+            $newcust_phone_primary   = (int)filter_var($_POST['newcust_phone_primary'], FILTER_SANITIZE_NUMBER_INT);
+            $newcust_phone_secondary = (int)filter_var($_POST['newcust_phone_secondary'], FILTER_SANITIZE_NUMBER_INT);
             $newcust_address_id      = htmlspecialchars($_POST['newcust_address_id']);
             
             $stmt = $db->prepare("INSERT INTO service_customer (customer_email, name_first, name_second, phone_primary, phone_secondary, address_id)
@@ -39,9 +39,9 @@
          {
             $newaddr_street = htmlspecialchars($_POST['newaddr_street']);
             $newaddr_city = htmlspecialchars($_POST['newaddr_city']);
-            $newaddr_zip = htmlspecialchars($_POST['newaddr_zip']);
+            $newaddr_zip = (int)filter_var($_POST['newaddr_zip'], FILTER_SANITIZE_NUMBER_INT);
             $newaddr_state = htmlspecialchars($_POST['newaddr_state']);
-            $newaddr_apt_number = htmlspecialchars($_POST['newaddr_apt_number']);
+            $newaddr_apt_number = (int)filter_var($_POST['newaddr_apt_number'], FILTER_SANITIZE_NUMBER_INT);
 
             $stmt = $db->prepare("INSERT INTO service_address (city, street, zip, state)
                                   VALUES (:city, :street, :zip, :state)");
