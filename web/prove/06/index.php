@@ -68,18 +68,18 @@
             $ns_jobs = $_POST['new_service_jobs'];
 
             // insert the jobs
-            foreach ($ns_jobs as $ns_job)
-            {
-               $nj_id = gen_uuid();
-               $nj_time = time();
-               $stmt = db->prepare("INSERT INTO service_job (job_id, service_id, technician, job_name, time_start)
-                                    VALUES (:nj_id, :ns_id, :nj_tech, :ns_job, :nj_time)");
-               $stmt->bindParam(':nj_id', $nj_id);
-               $stmt->bindParam(':ns_id', $ns_id);
-               $stmt->bindParam(':nj_tech', $nj_tech);
-               $stmt->bindParam(':ns_job', $ns_job);
-               $stmt->bindParam(':nj_time', $nj_time);
-            }
+            // foreach ($ns_jobs as $ns_job)
+            // {
+            //    $nj_id = gen_uuid();
+            //    $nj_time = time();
+            //    $stmt = db->prepare("INSERT INTO service_job (job_id, service_id, technician, job_name, time_start)
+            //                         VALUES (:nj_id, :ns_id, :nj_tech, :ns_job, :nj_time)");
+            //    $stmt->bindParam(':nj_id', $nj_id);
+            //    $stmt->bindParam(':ns_id', $ns_id);
+            //    $stmt->bindParam(':nj_tech', $nj_tech);
+            //    $stmt->bindParam(':ns_job', $ns_job);
+            //    $stmt->bindParam(':nj_time', $nj_time);
+            // }
          }
          catch (PDOException $ex)
          {
