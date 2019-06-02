@@ -1,7 +1,6 @@
 <?php
-   $post_user = $_POST['user'];
-   if (!is_null($post_user))
-      $_SESSION['user'] = htmlspecialchars($post_user);
+   if (isset($_POST['user']))
+      $_SESSION['user'] = htmlspecialchars($_POST['user']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +17,11 @@
       require 'nav.php';
       require 'db_connect.php';
 
-      if (is_null($post_user))
-         echo "post_user is null right now<br>";
+      // if (is_null($post_user))
+      //    echo "post_user is null right now<br>";
       
-      if (isset($post_user))
-         echo "post_user is set right now<br>";
+      // if (isset($post_user))
+      //    echo "post_user is set right now<br>";
 
       // set these up for saving user input upon error
       $dummy_vin = "00000000000000000";
