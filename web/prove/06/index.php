@@ -1,6 +1,6 @@
 <?php
    $post_user = $_POST['user'];
-   if (isset($post_user))
+   if (!is_null($post_user))
       $_SESSION['user'] = htmlspecialchars($post_user);
 ?>
 <!DOCTYPE html>
