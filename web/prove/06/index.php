@@ -17,7 +17,8 @@
       $_SESSION['user'] = htmlspecialchars($_POST['user']);
 
       // set these up for saving user input upon error
-      $input_vin   = null;
+      $dummy_vin = "00000000000000000";
+      $input_vin   = $dummy_vin;
       $input_email = "";
       $input_notes = "";
       $input_tech  = "";
@@ -83,11 +84,14 @@
          die();
       }
 
+      if ($input_vin==$dummy_vin)
+         $input_vin="";
+
       echo '<form action="index.php" method="post">';
       echo '<table>';
-      echo '<tr><td>VIN:</td>            <td><input type="text" name="new_service_vin" required></td></tr>';
-      echo '<tr><td>Customer email:</td> <td><input type="text" name="new_service_email" required></td></tr>';
-      echo '<tr><td>Notes:</td>          <td><textarea name="new_service_notes" id="notes" required></textarea></td></tr>';
+      echo "<tr><td>VIN:</td>            <td><input type=\"text\" name=\"new_service_vin\" value=$input_vin required></td></tr>";
+      echo "<tr><td>Customer email:</td> <td><input type=\"text\" name=\"new_service_email\" value=$input_email required></td></tr>";
+      echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" value=$input_notes required></textarea></td></tr>";
 
       // technician row
       echo '<tr><td>Technician:</td><td>';
