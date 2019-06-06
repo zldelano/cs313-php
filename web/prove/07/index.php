@@ -10,6 +10,7 @@
 </head>
 <body>
    <?php
+      session_start();
       if (isset($_POST['user']))
       {
          $_SESSION['user'] = htmlspecialchars($_POST['user']);
