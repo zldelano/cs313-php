@@ -9,7 +9,7 @@
                     echo "<li><a href='./index.php'>New Service</a></li>";
                     echo "<li><a href='./unfinished_services.php'>Unfinished Services</a></li>";
                     echo "<li><a href='./login.php'>Logout</a></li>";
-                    ?>
+                ?>
             </ul>
         </nav>
     </div>
