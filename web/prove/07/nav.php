@@ -15,7 +15,6 @@
     </div>
 </header>
 <?php
-    // $_SESSION['user'] = 'ogonzales';
     session_start();
     $curr_file = basename($_SERVER['PHP_SELF']);
     if (!isset($_SESSION['user']) && $curr_file != "login.php")
