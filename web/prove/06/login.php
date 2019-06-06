@@ -14,9 +14,8 @@
       require 'db_connect.php';
 
       // logout if logged in
-      if (isset($_SESSION['user']))
+      if (isset($_SESSION))
       {
-         unset($_SESSION['user']);
          session_destroy();
       }
 
