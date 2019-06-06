@@ -15,6 +15,11 @@
     </div>
 </header>
 <?php
+    session_start();
+    if (isset($_POST['user']))
+    {
+        $_SESSION['user'] = htmlspecialchars($_POST['user']);
+    }
     $curr_file = basename($_SERVER['PHP_SELF']);
     if (!isset($_SESSION['user']) && $curr_file != "login.php")
     {
