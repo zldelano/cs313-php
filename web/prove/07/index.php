@@ -13,9 +13,8 @@
       require 'nav.php';
       require 'db_connect.php';
 
-
       // set these up for saving user input upon error
-      $dummy_vin = "00000000000000000";
+      $dummy_vin   = "00000000000000000";
       $input_vin   = $dummy_vin;
       $input_email = "";
       $input_notes = "";
@@ -27,10 +26,10 @@
          echo '<div class="error">No jobs selected for service.</div>';
          
             // save the user's input if they made a mistake
-            $input_vin = $_POST['new_service_vin'];
+            $input_vin   = $_POST['new_service_vin'];
             $input_email = $_POST['new_service_email'];
             $input_notes = $_POST['new_service_notes'];
-            $input_tech = $_POST['new_service_tech'];
+            $input_tech  = $_POST['new_service_tech'];
       }
       else if (isset($_POST['new_service_jobs']))
       {
