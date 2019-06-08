@@ -12,6 +12,7 @@
    <?php
       require 'nav.php';
       require 'db_connect.php';
+      echo var_dump($_POST);
 
       try
       {
