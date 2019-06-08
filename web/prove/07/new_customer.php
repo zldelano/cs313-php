@@ -92,7 +92,7 @@
       echo "</datalist>";
    ?>
    <h1>New Customer</h1>
-   <form action="new_car.php" method="post">
+   <form action="new_customer.php" method="post">
       <table>
          <tr>
             <td>Email:</td>            <td><input type="text" name="newcust_email" required></td>
@@ -116,7 +116,7 @@
       <input type="submit"><br>
    </form>
    <h1>New Address</h1>
-   <form action="new_car.php" method="post">
+   <form action="new_address.php" method="post">
       <table>
       <tr>
          <td>Street:</td>           <td><input type="text" name="newaddr_street" required></td>
