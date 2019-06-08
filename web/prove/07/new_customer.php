@@ -97,10 +97,10 @@
             <td>Second name:</td>      <td><input type="text" name="newcust_name_second" required></td>
          </tr>
          <tr>
-            <td>Phone (primary):</td>  <td><input type="number" name="newcust_phone_primary" required></td>
+            <td>Phone (primary):</td>  <td><input type="text" name="newcust_phone_primary" required></td>
          </tr>
          <tr>
-            <td>Phone (secondary):</td><td><input type="number" name="newcust_phone_secondary" required></td>
+            <td>Phone (secondary):</td><td><input type="text" name="newcust_phone_secondary" required></td>
          </tr>
          <tr>
             <td>Address:</td>          <td><input type="text" name="newcust_address_id" list="addresses" required></td>

@@ -28,6 +28,7 @@ CREATE TABLE service_address (
    -- key setup
    PRIMARY KEY (address_id),
 
+   -- constraints
    CONSTRAINT zip_length   CHECK (CHAR_LENGTH(zip) = 5),
    CONSTRAINT state_length CHECK (CHAR_LENGTH(state) = 2)
 );
@@ -36,13 +37,16 @@ CREATE TABLE service_customer (
    customer_email    VARCHAR(40)    NOT NULL,
    name_first        VARCHAR(30)    NOT NULL,
    name_second       VARCHAR(30)    NOT NULL,
-   phone_primary     NUMERIC(11,0)  NOT NULL,
-   phone_secondary   NUMERIC(11,0)  DEFAULT NULL,
+   phone_primary     CHAR(10)       NOT NULL,
+   phone_secondary   CHAR(10)       DEFAULT NULL,
    address_id        UUID           NOT NULL,
 
    -- key setup
    PRIMARY KEY (customer_email),
-   FOREIGN KEY (address_id) REFERENCES service_address (address_id)
+   FOREIGN KEY (address_id) REFERENCES service_address (address_id),
+
+   -- constraints
+   CONSTRAINT phoneprim_length CHECK (CHAR_LENGTH(phone_primary) = 10)
 );
 
 CREATE TABLE service_job_info (
