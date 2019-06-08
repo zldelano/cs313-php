@@ -109,7 +109,7 @@
       <input type="submit"><br>
    </form>
    <h1>New Address</h1>
-   <form action="new_address.php" name="form_address" onsubmit="return validateFormAddress()" method="post">
+   <form action="new_customer.php" name="form_address" onsubmit="return validateFormAddress()" method="post">
       <table>
       <tr>
          <td>Street:</td>           <td><input type="text" name="newaddr_street" required></td>
