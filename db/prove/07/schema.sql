@@ -21,12 +21,15 @@ CREATE TABLE service_address (
    address_id        UUID           NOT NULL       DEFAULT uuid_generate_v4(),
    city              VARCHAR(100)   NOT NULL,
    street            VARCHAR(100)   NOT NULL,
-   zip               NUMERIC(5,0)   NOT NULL,
+   zip               CHAR(5)        NOT NULL,
    state             CHAR(2)        NOT NULL,
-   apt_number        NUMERIC(10,0)  DEFAULT NULL,
+   apt_number        CHAR(10)       DEFAULT NULL,
 
    -- key setup
-   PRIMARY KEY (address_id)
+   PRIMARY KEY (address_id),
+
+   CONSTRAINT zip_length   CHECK (CHAR_LENGTH(zip) = 5),
+   CONSTRAINT state_length CHECK (CHAR_LENGTH(state) = 2)
 );
 
 CREATE TABLE service_customer (
@@ -126,17 +129,17 @@ VALUES
 INSERT INTO service_address
    (city, street, zip, state)
 VALUES
-   ('Redmond', '11115 156th PL NE', 98052, 'WA'),
-   ('Scottsville', '2526  Sherman Street', 24590, 'VA'),
-   ('Pleasant Hill', '249 Harter Street', 45359, 'OH');
+   ('Redmond', '11115 156th PL NE', '98052', 'WA'),
+   ('Scottsville', '2526  Sherman Street', '24590', 'VA'),
+   ('Pleasant Hill', '249 Harter Street', '45359', 'OH');
 
 -- inserting into service_customer
 INSERT INTO service_customer
    (customer_email, name_first, name_second, phone_primary, phone_secondary, address_id)
 VALUES
-   ('zdelano@fakedomain.com', 'Zach', 'Delano', 4252299246, NULL, (SELECT address_id FROM service_address WHERE street='11115 156th PL NE')),
-   ('jshea@fakedomain.com', 'Joseph', 'Shea', 7858503194, 7579333371, (SELECT address_id FROM service_address WHERE street='2526  Sherman Street')),
-   ('dsweet@fakedomain.com', 'David', 'Sweet', 9376765240, 7409723894, (SELECT address_id FROM service_address WHERE street='249 Harter Street'));
+   ('zdelano@fakedomain.com', 'Zach', 'Delano', '4252299246', NULL, (SELECT address_id FROM service_address WHERE street='11115 156th PL NE')),
+   ('jshea@fakedomain.com', 'Joseph', 'Shea', '7858503194', '7579333371', (SELECT address_id FROM service_address WHERE street='2526  Sherman Street')),
+   ('dsweet@fakedomain.com', 'David', 'Sweet', '9376765240', '7409723894', (SELECT address_id FROM service_address WHERE street='249 Harter Street'));
 
 -- inserting into service_vehicle
 INSERT INTO service_vehicle
