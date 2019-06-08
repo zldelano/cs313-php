@@ -24,6 +24,12 @@
             $newcust_phone_primary   = htmlspecialchars($_POST['newcust_phone_primary']);
             $newcust_phone_secondary = htmlspecialchars($_POST['newcust_phone_secondary']);
             $newcust_address_id      = htmlspecialchars($_POST['newcust_address_id']);
+            echo var_dump($newcust_email);
+            echo var_dump($newcust_name_first);
+            echo var_dump($newcust_name_second);
+            echo var_dump($newcust_phone_primary);
+            echo var_dump($newcust_phone_secondary);
+            echo var_dump($newcust_address_id);
             
             $stmt = $db->prepare("INSERT INTO service_customer (customer_email, name_first, name_second, phone_primary, phone_secondary, address_id)
                                   VALUES (:email, :name_first, :name_second, :phone_primary, :phone_secondary, :address_id)");
