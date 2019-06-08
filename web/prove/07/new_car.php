@@ -6,6 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Document</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   <script src="script.js"></script>
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,7 +46,7 @@
    <form action="new_car.php" method="post">
       <table>
          <tr>
-            <td>VIN:</td>         <td><input type="text" name="newcar_vin"   required><br></td>
+            <td>VIN:</td>         <td><input type="text" class="vin" name="newcar_vin" placeholder="17 characters long" required><br></td>
          </tr>
          <tr>
             <td>Color:</td>       <td><input type="text" name="newcar_color" required><br></td>
@@ -56,10 +58,10 @@
             <td>Model:</td>       <td><input type="text" name="newcar_model" required><br></td>
          </tr>
          <tr>
-            <td>Year:</td>        <td><input type="text" name="newcar_year"  required><br></td>
+            <td>Year:</td>        <td><input type="text" name="newcar_year"  placeholder="4 characters long" required><br></td>
          </tr>
          <tr>
-            <td>Owner email:</td> <td><input type="text" name="newcar_owner" required><br></td>
+            <td>Owner email:</td> <td><input type="email" name="newcar_owner" required><br></td>
          </tr>
       </table>
       <input type="submit"><br>

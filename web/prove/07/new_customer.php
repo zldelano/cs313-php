@@ -12,7 +12,6 @@
    <?php
       require 'nav.php';
       require 'db_connect.php';
-      echo var_dump($_POST);
 
       try
       {
@@ -25,12 +24,6 @@
             $newcust_phone_primary   = htmlspecialchars($_POST['newcust_phone_primary']);
             $newcust_phone_secondary = htmlspecialchars($_POST['newcust_phone_secondary']);
             $newcust_address_id      = htmlspecialchars($_POST['newcust_address_id']);
-            echo var_dump($newcust_email);
-            echo var_dump($newcust_name_first);
-            echo var_dump($newcust_name_second);
-            echo var_dump($newcust_phone_primary);
-            echo var_dump($newcust_phone_secondary);
-            echo var_dump($newcust_address_id);
             
             $stmt = $db->prepare("INSERT INTO service_customer (customer_email, name_first, name_second, phone_primary, phone_secondary, address_id)
                                   VALUES (:email, :name_first, :name_second, :phone_primary, :phone_secondary, :address_id)");
@@ -95,7 +88,7 @@
    <form action="new_customer.php" method="post">
       <table>
          <tr>
-            <td>Email:</td>            <td><input type="text" name="newcust_email" required></td>
+            <td>Email:</td>            <td><input type="email" name="newcust_email" required></td>
          </tr>
          <tr>
             <td>First name:</td>       <td><input type="text" name="newcust_name_first" required></td>
@@ -104,10 +97,10 @@
             <td>Second name:</td>      <td><input type="text" name="newcust_name_second" required></td>
          </tr>
          <tr>
-            <td>Phone (primary):</td>  <td><input type="text" name="newcust_phone_primary" required></td>
+            <td>Phone (primary):</td>  <td><input type="text" class="phone" name="newcust_phone_primary" placeholder="Ex: '1234567891'" required></td>
          </tr>
          <tr>
-            <td>Phone (secondary):</td><td><input type="text" name="newcust_phone_secondary" required></td>
+            <td>Phone (secondary):</td><td><input type="text" class="phone" name="newcust_phone_secondary" placeholder="Ex: '1234567891'" required></td>
          </tr>
          <tr>
             <td>Address:</td>          <td><input type="text" name="newcust_address_id" list="addresses" required></td>
@@ -125,10 +118,10 @@
          <td>City:</td>             <td><input type="text" name="newaddr_city" required></td>
       </tr>
       <tr>
-         <td>Zip:</td>              <td><input type="text" name="newaddr_zip" required></td>
+         <td>Zip:</td>              <td><input type="text" class="zip" name="newaddr_zip" placeholder="Ex: '98052', etc." required></td>
       </tr>
       <tr>
-         <td>State:</td>            <td><input type="text" name="newaddr_state" required></td>
+         <td>State:</td>            <td><input type="text" class="state" name="newaddr_state" placeholder="Ex: 'WA', 'NY', etc." required></td>
       </tr>
       <tr>
          <td>Apartment Number:</td> <td><input type="text" name="newaddr_apt_number"></td>

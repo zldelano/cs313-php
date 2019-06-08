@@ -139,7 +139,7 @@
 
       echo '<form action="index.php" method="post">';
       echo '<table>';
-      echo "<tr><td>VIN:</td>            <td><input type=\"number\" list=$datalist_name_vehicles name=\"new_service_vin\"  required value=$input_vin></td></tr>";
+      echo "<tr><td>VIN:</td>            <td><input type=\"number\" class=\"vin\" list=$datalist_name_vehicles name=\"new_service_vin\"  required  placeholder=\"17 characters long\" value=$input_vin></td></tr>";
       echo "<tr><td>Customer email:</td> <td><input type=\"email\" list=$datalist_name_customers name=\"new_service_email\" required value=$input_email></td></tr>";
       echo "<tr><td>Notes:</td>          <td><textarea name=\"new_service_notes\" id=\"notes\" required>$input_notes</textarea></td></tr>";
       // https://www.w3schools.com/tags/tag_datalist.asp for the future for customer emails
