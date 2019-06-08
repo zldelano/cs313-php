@@ -35,7 +35,7 @@ function validateFormAddress() {
         alert("Zip length must be 5 digits long. Ex: 98052");
         return false;
     }
-    if (newaddr_state.length != 5) {
+    if (newaddr_state.length != 2) {
         alert("State must only have two characters. Ex: 'WA'");
         return false;
     }
