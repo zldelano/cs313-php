@@ -85,7 +85,7 @@
       echo "</datalist>";
    ?>
    <h1>New Customer</h1>
-   <form action="new_customer.php" method="post">
+   <form action="new_customer.php" name="form_customer" onsubmit="return validateFormCustomer()" method="post">
       <table>
          <tr>
             <td>Email:</td>            <td><input type="email" name="newcust_email" required></td>
@@ -97,10 +97,10 @@
             <td>Second name:</td>      <td><input type="text" name="newcust_name_second" required></td>
          </tr>
          <tr>
-            <td>Phone (primary):</td>  <td><input type="text" class="phone" name="newcust_phone_primary" placeholder="Ex: '1234567891'" required></td>
+            <td>Phone (primary):</td>  <td><input type="text" name="newcust_phone_primary" class="phone" placeholder="Ex: '1234567890'" required></td>
          </tr>
          <tr>
-            <td>Phone (secondary):</td><td><input type="text" class="phone" name="newcust_phone_secondary" placeholder="Ex: '1234567891'" required></td>
+            <td>Phone (secondary):</td><td><input type="text" name="newcust_phone_secondary" class="phone" placeholder="Ex: '1234567890'" required></td>
          </tr>
          <tr>
             <td>Address:</td>          <td><input type="text" name="newcust_address_id" list="addresses" required></td>
@@ -109,7 +109,7 @@
       <input type="submit"><br>
    </form>
    <h1>New Address</h1>
-   <form action="new_address.php" method="post">
+   <form action="new_address.php" name="form_address" onsubmit="return validateFormAddress()" method="post">
       <table>
       <tr>
          <td>Street:</td>           <td><input type="text" name="newaddr_street" required></td>
@@ -118,10 +118,10 @@
          <td>City:</td>             <td><input type="text" name="newaddr_city" required></td>
       </tr>
       <tr>
-         <td>Zip:</td>              <td><input type="text" class="zip" name="newaddr_zip" placeholder="Ex: '98052', etc." required></td>
+         <td>Zip:</td>              <td><input type="text" name="newaddr_zip" class="zip" placeholder="Ex: '98052', etc." required></td>
       </tr>
       <tr>
-         <td>State:</td>            <td><input type="text" class="state" name="newaddr_state" placeholder="Ex: 'WA', 'NY', etc." required></td>
+         <td>State:</td>            <td><input type="text" name="newaddr_state" class="state" placeholder="Ex: 'WA', 'NY', etc." required></td>
       </tr>
       <tr>
          <td>Apartment Number:</td> <td><input type="text" name="newaddr_apt_number"></td>

@@ -137,7 +137,7 @@
       if ($input_vin==$dummy_vin)
          $input_vin=null;
 
-      echo '<form action="index.php" method="post">';
+      echo '<form action="index.php" name="form_service" onsubmit="validateFormService()" method="post">';
       echo '<table>';
       echo "<tr><td>VIN:</td>            <td><input type=\"number\" class=\"vin\" list=$datalist_name_vehicles name=\"new_service_vin\"  required  placeholder=\"17 characters long\" value=$input_vin></td></tr>";
       echo "<tr><td>Customer email:</td> <td><input type=\"email\" list=$datalist_name_customers name=\"new_service_email\" required value=$input_email></td></tr>";
